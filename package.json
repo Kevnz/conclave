@@ -10,7 +10,8 @@
     "express-state": "latest",
     "express3-handlebars": "latest",
     "combohandler": "~0.3.4",
-    "express-resource": "~1.0.0"
+    "express-resource": "~1.0.0",
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
