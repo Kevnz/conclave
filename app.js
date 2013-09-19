@@ -29,7 +29,13 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 
-http.createServer(app).listen(app.get('port'), function(){
-    console.log("Express server listening on port " + app.get('port') + " in " + app.get('env') +" mode");
-});
+ 
+var io = require('socket.io').listen(app.listen(app.get('port')));
 
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('message', { message: 'welcome to the chat' });
+    socket.on('send', function (data) {
+        io.sockets.emit('message', data);
+    });
+});
