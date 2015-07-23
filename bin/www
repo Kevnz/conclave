@@ -4,23 +4,21 @@
  * Module dependencies.
  */
 require("babel/register");
-
 var app = require('../app');
-var debug = require('debug')('shopkeep:server');
+var debug = require('debug')('conclave:server');
 var http = require('http');
-var routeListing = require('../utils/routes').routeListing
+
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3131');
+var port = normalizePort(process.env.PORT || '3100');
 app.set('port', port);
-
+console.log('prepare to start server on port ' + port);
 /**
  * Create HTTP server.
  */
- console.log('//')
-routeListing(app._router.stack, '');
+
 var server = http.createServer(app);
 
 /**

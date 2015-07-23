@@ -1,31 +1,9 @@
-exports.index = function(req, res){
-    res.send('index');
-};
+var express = require('express');
+var router = express.Router();
 
-exports.new = function(req, res){
-    res.send('new');
-};
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
 
-exports.create = function(req, res){
-    res.send('create');
-};
-
-exports.show = function(req, res){
-    res.send('show');
-};
-
-exports.edit = function(req, res){
-    res.send('edit');
-};
-
-exports.update = function(req, res){
-    res.send('update');
-};
-
-exports.destroy = function(req, res){
-    res.send('destroy');
-};
-
-exports.load = function(id, fn){
- 
-};
+module.exports = router;
