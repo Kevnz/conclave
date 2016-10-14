@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-require("babel/register");
-var app = require('../app');
+require("babel-register");
+var app = require('../src/server');
 var debug = require('debug')('conclave:server');
 var http = require('http');
 
@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3100');
+var port = normalizePort(process.env.PORT || '3232');
 app.set('port', port);
 console.log('prepare to start server on port ' + port);
 /**
