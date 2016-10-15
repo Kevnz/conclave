@@ -1,20 +1,10 @@
 const argv = require('yargs').argv;
-const fs = require('fs');
+
 const pluralize = require('pluralize');
+const to = require('to-case');
 
-// YYYYMMDDHHmmss
-
-const now = new Date;
-const year = now.getFullYear();
-const month = now.getMonth() > 8 ? (now.getMonth() + 1).toString() : `0${(now.getMonth() + 1)}`;
-const day = now.getDate() > 9 ? now.getDate().toString() : `0${now.getDate()}`;
-const hour = now.getHours() > 8 ? (now.getHours() + 1).toString() : `0${(now.getHours() + 1)}`;
-const minutes = now.getMinutes() > 8 ? (now.getMinutes() + 1).toString() : `0${(now.getMinutes() + 1)}`;
-const seconds = now.getMinutes() > 8 ? (now.getMinutes() + 1).toString() : `0${(now.getMinutes() + 1)}`;
-const milliseconds = now.getMilliseconds() > 8 ? (now.getMilliseconds() + 1).toString() : `0${(now.getMilliseconds() + 1)}`;
-const timestamp = `${year}${month}${day}${hour}${minutes}${seconds}${milliseconds}`;
-
-
+const timestamp = require('./utils/timestamp')();
+const writeFile = require('./utils/write-file');
 const getDBType = function (dbType) {
   switch (dbType) {
     case 'string':
@@ -33,9 +23,10 @@ const getDBType = function (dbType) {
       return 'string';
   }
 };
-const writeFile = function writeFileToSystem(name, attributes) {
-  const tableName = pluralize(name.toLowerCase());
-  const formattedName = name.toLowerCase();
+const writeFiles = function writeFileToSystem(name, attributes) {
+  const dbFriendly = to.snake(name).toLowerCase();
+  const tableName = pluralize(dbFriendly);
+  const formattedName = to.camel(name);
   const model = `
 const bookshelf = require('./bookshelf');
 
@@ -67,8 +58,8 @@ exports.down = function(knex, Promise) {
 
   const fullMigrationPath = `./migrations/${timestamp}-${formattedName}.js`;
   const fullModelPath = `./src/models/${formattedName}.js`;
-  fs.writeFileSync(fullMigrationPath, migration);
-  fs.writeFileSync(fullModelPath, model);
+  writeFile(fullMigrationPath, migration);
+  writeFile(fullModelPath, model);
   console.log(`created: ${fullMigrationPath}`);
   console.log(`created: ${fullModelPath}`);
 };
@@ -77,4 +68,4 @@ const name = argv.name;
 const attributes = argv._;
 
 
-writeFile(name, attributes);
+writeFiles(name, attributes);
