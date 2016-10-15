@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const layouts = require('express-ejs-layouts');
 const home = require('./controllers/home');
+
 const app = express();
 
 app.set('views', path.join(__dirname, '../', 'views'));
