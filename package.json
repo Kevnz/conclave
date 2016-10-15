@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "node-dev ./bin/dev",
     "build": "babel src --out-dir dist",
-    "test": "multi=\"mocha-osx-reporter=- mocha-better-spec-reporter=-\" mocha \"src/**/*-spec.js\" --reporter mocha-multi --compilers js:babel-register --recursive"
+    "pretest": "export NODE_ENV=test && knex migrate:latest",
+    "test": "multi=\"mocha-osx-reporter=- mocha-better-spec-reporter=-\" mocha \"src/**/*-spec.js\" --reporter mocha-multi --require=env-test --compilers js:babel-register --recursive",
+    "posttest": "export NODE_ENV=development",
     "model:create": "node bin/model.js ",
     "migrate": "knex migrate:latest"
   },
