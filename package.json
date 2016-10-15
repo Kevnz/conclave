@@ -9,7 +9,8 @@
     "test": "multi=\"mocha-osx-reporter=- mocha-better-spec-reporter=-\" mocha \"src/**/*-spec.js\" --reporter mocha-multi --require=env-test --compilers js:babel-register --recursive",
     "posttest": "export NODE_ENV=development",
     "model:create": "node bin/model.js ",
-    "migrate": "knex migrate:latest"
+    "migrate:create": "node bin/migration.js ",
+    "migrate:run": "knex migrate:latest"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
