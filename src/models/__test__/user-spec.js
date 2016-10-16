@@ -11,7 +11,6 @@ describe('The User Model', () => {
       User.login(userToLogin.email, userToLogin.password)
         .then((user) => {
           assert(user.get('email') === userToLogin.email);
-          console.log(user);
           done();
         });
     });
