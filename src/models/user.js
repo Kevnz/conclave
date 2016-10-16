@@ -1,10 +1,14 @@
 const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt'));
 const bookshelf = require('./bookshelf');
+require('./topic');
 
 module.exports = bookshelf.model('User', {
   tableName: 'users',
-  idAttribute: 'id'
+  idAttribute: 'id',
+  topics: function topicRelation() {
+    return this.hasMany('Topic', 'created_by');
+  }
 }, {
   login: Promise.method(function authenticateUser(email, password) {
     if (!email || !password) {
