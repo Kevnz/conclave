@@ -14,6 +14,8 @@
     "seed:run": "knex seed:run",
     "seed:make": "knex seed:make",
     "fixtures": "node src/utils/fixtures.js",
+    "precov": "export NODE_ENV=test",
+    "cov": "nyc npm test"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -52,6 +54,7 @@
     "mocha-multi": "^0.9.1",
     "mocha-osx-reporter": "^0.1.2",
     "node-dev": "^3.1.3",
+    "nyc": "^8.3.1",
     "pluralize": "^3.0.0",
     "supertest": "^2.0.0",
     "yargs": "^6.0.0"
