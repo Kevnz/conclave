@@ -1,0 +1,30 @@
+<h1>Conclave Register</h1>
+<div class="columns">
+  <div class="column content is-6">
+    <h1>Register to use Conclave</h1>
+    <form method="POST">
+      <label class="label">First Name</label>
+        <p class="control">
+          <input class="input" type="text" name="firstName" placeholder="First Name">
+        </p>
+        <label class="label">Last Name</label>
+        <p class="control">
+          <input class="input" type="text" name="lastName" placeholder="Last Name">
+        </p>
+        <label class="label">Email</label>
+        <p class="control has-icon has-icon-right">
+          <input class="input" type="email" placeholder="Email" name="email" value="">
+        </p>
+        <label class="label">Password</label>
+        <p class="control has-icon has-icon-right">
+          <input class="input " type="password" name="password" placeholder="Password" value="">
+        </p>
+        <p class="control">
+          <button class="button is-primary">Submit</button>
+          <button class="button is-link">Cancel</button>
+        </p>
+    </form>
+  </div>
+</div>
+<%- contentFor('pageTitle') %>
+<%= title %>

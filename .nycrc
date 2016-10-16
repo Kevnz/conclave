@@ -1,0 +1,27 @@
+{
+  "require": [
+    "babel-register"
+  ],
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "exclude": [
+    "**/__test__/**",
+    "bin/**",
+    "src/utils/**",
+    "migrations/**.js",
+    "seeds/**.js",
+    "node_modules/**",
+    "src/server.js"
+  ],
+  "sourceMap": false,
+  "babel": {
+    "presets": ["es2015"],
+    "env": {
+      "test": {
+        "plugins": ["istanbul"]
+      }
+    }
+  }
+}
