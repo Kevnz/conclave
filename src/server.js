@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const layouts = require('express-ejs-layouts');
 const home = require('./controllers/home');
+const requiredir = require('requiredir');
+
+const api = requiredir('./controllers/api/');
 
 const app = express();
 
@@ -14,9 +17,10 @@ app.use(layouts);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../', 'public')));
-app.use(favicon(path.join(__dirname, '../',  '/public/favicons/favicon.ico')));
+app.use(favicon(path.join(__dirname, '../', '/public/favicons/favicon.ico')));
 
 app.use(home());
+app.use('/api/topics', api.topics());
 
 app.use(function notFoundHandler(req, res, next) {
   const err = new Error('Not Found');
