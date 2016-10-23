@@ -49,6 +49,7 @@
     "eslint-plugin-react": "^6.4.1",
     "faker": "^3.1.0",
     "js-object-pretty-print": "^0.2.0",
+    "lorem-ipsum": "^1.0.3",
     "mocha": "^3.1.2",
     "mocha-better-spec-reporter": "^3.0.2",
     "mocha-multi": "^0.9.1",
