@@ -5,10 +5,15 @@ const favicon = require('serve-favicon');
 const layouts = require('express-ejs-layouts');
 const home = require('./controllers/home');
 const requiredir = require('requiredir');
+const passport = require('passport');
+const strategy = require('./core/jwt-strategy');
 
 const api = requiredir('./controllers/api/');
 
 const app = express();
+passport.use(strategy);
+app.use(passport.initialize());
+
 
 app.set('views', path.join(__dirname, '../', 'views'));
 app.set('view engine', 'ejs');
