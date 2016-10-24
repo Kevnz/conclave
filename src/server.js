@@ -26,6 +26,7 @@ app.use(favicon(path.join(__dirname, '../', '/public/favicons/favicon.ico')));
 
 app.use(home());
 app.use('/api/topics', api.topics());
+app.use('/api/users', api.users());
 
 app.use(function notFoundHandler(req, res, next) {
   const err = new Error('Not Found');
