@@ -8,7 +8,8 @@ module.exports = bookshelf.model('User', {
   idAttribute: 'id',
   topics: function topicRelation() {
     return this.hasMany('Topic', 'created_by');
-  }
+  },
+  hidden: ['password']
 }, {
   login: Promise.method(function authenticateUser(email, password) {
     if (!email || !password) {
