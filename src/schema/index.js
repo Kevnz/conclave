@@ -7,8 +7,10 @@ const {
 
 const UserType = require('./user-type');
 const TopicType = require('./topic-type');
+const MessageType = require('./message-type');
 const User = require('../models/user');
 const Topic = require('../models/topic');
+const Message = require('../models/message');
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -42,6 +44,17 @@ const schema = new GraphQLSchema({
         },
         description: 'The topics.',
         resolve: ((source, { id }) => Topic.getByParentId(id))
+      },
+      message: {
+        type: MessageType,
+        args: {
+          id: {
+            type: GraphQLInt,
+            description: 'ID of the message.'
+          }
+        },
+        description: 'The message.',
+        resolve: ((source, { id }) => Message.where({ id }).fetch())
       }
     })
   })
