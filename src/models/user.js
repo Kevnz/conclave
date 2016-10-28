@@ -33,6 +33,6 @@ module.exports = bookshelf.model('User', {
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
-    return new this({ firstName, lastName, email, password: hashedPassword }).save();
+    return new this({ first: firstName, last: lastName, email, password: hashedPassword }).save();
   })
 });
