@@ -7,6 +7,8 @@ const home = require('./controllers/home');
 const requiredir = require('requiredir');
 const passport = require('passport');
 const strategy = require('./core/jwt-strategy');
+const graphqlHTTP = require('express-graphql');
+const ConclaveSchema = require('./schema');
 
 const api = requiredir('./controllers/api/');
 
@@ -23,6 +25,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../', 'public')));
 app.use(favicon(path.join(__dirname, '../', '/public/favicons/favicon.ico')));
+
+app.use('/graphql', graphqlHTTP({
+  schema: ConclaveSchema,
+  graphiql: true,
+  pretty: true
+}));
 
 app.use(home());
 app.use('/api/topics', api.topics());
