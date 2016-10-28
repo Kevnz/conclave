@@ -2,14 +2,13 @@ const {
   GraphQLInt,
   GraphQLObjectType,
   GraphQLNonNull,
-  GraphQLSchema,
   GraphQLString,
-  graphql
+  GraphQLList
 } = require('graphql');
 const BookshelfType = require('graphql-bookshelf').default;
 const Message = require('../models/message');
 
-module.exports = new GraphQLObjectType(BookshelfType({
+const MessageType = new GraphQLObjectType(BookshelfType({
   name: 'Message',
   description: 'A Message',
   fields: (model) => ({
@@ -24,6 +23,12 @@ module.exports = new GraphQLObjectType(BookshelfType({
     body: model.attr({
       type: GraphQLString,
       description: 'The message body'
+    }),
+    replies: model.hasMany({
+      type: new GraphQLList(MessageType),
+      description: 'Replies to this message'
     })
   })
 }));
+
+module.exports = MessageType;
