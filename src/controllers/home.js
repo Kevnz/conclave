@@ -1,6 +1,9 @@
 /* eslint new-cap: 0 */
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const config = require('xtconf')();
 const User = require('../models/user');
+
 const router = express.Router();
 
 module.exports = function homeController() {
@@ -12,12 +15,18 @@ module.exports = function homeController() {
   });
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
+    console.log('req body', req.body);
     User
       .login(email, password)
       .then((user) => {
-        res.redirect('/');
+        const payload = { id: user.id };
+        const token = jwt.sign(payload, config.get('auth-secret'));
+        //res.json({ message: 'ok', token });
+
+        res.redirect('/?token=' + token);
       })
       .catch((err) => {
+        console.log('err', err);
         res.redirect('/login');
       });
   });

@@ -6,6 +6,7 @@ const knex = require('../knex');
 const bookshelf = Bookshelf(knex);
 bookshelf.plugin('registry');
 bookshelf.plugin('virtuals');
+bookshelf.plugin('visibility');
 bookshelf.knex.on('query', (data) => {
 
 });
