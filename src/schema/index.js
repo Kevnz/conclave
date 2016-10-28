@@ -25,14 +25,7 @@ const schema = new GraphQLSchema({
           }
         },
         description: 'The current user.',
-        resolve: ((source, { id }) => {
-          console.log('the thing', id);
-          return User.where({ id: id }).fetch()
-            .then((user) => {
-              console.log('the then', user);
-              return user;
-            });
-        })
+        resolve: ((source, { id }) => User.where({ id }).fetch())
       },
       topic: {
         type: new GraphQLList(TopicType),
