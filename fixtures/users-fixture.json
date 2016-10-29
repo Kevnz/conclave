@@ -1,160 +1,160 @@
 {
   "users": [
     {
-      "first": "Lelia",
-      "last": "Murray",
+      "first_name": "Lelia",
+      "last_name": "Murray",
       "email": "Rosemarie_Heaney49@yahoo.com",
       "role": "user",
       "password": "F1Kmj1zXktJvcHY",
       "hashedPassword": "$2a$10$lbk4LAKyiG8v.SU7fMaI8eWWLm1l44BadYqZcCkHxtwXzY.AWbCc2"
     },
     {
-      "first": "Sterling",
-      "last": "Doyle",
+      "first_name": "Sterling",
+      "last_name": "Doyle",
       "email": "Donald.Gerlach@yahoo.com",
       "role": "user",
       "password": "loPfiOkz0n6eO6Q",
       "hashedPassword": "$2a$10$Ki13B8dMMal/VagpGmHcm.2ZHhgxHLmsR/4fy/M4Ve3fu1XYM6ANm"
     },
     {
-      "first": "Maximillian",
-      "last": "O'Reilly",
+      "first_name": "Maximillian",
+      "last_name": "O'Reilly",
       "email": "Kitty34@hotmail.com",
       "role": "user",
       "password": "WXcgd_jW1_Ch2uf",
       "hashedPassword": "$2a$10$t4cbYpASUT.wO0XFLI9Meu3G5PVAjCYWtA29Vy4nbUY.ebpI7CCuG"
     },
     {
-      "first": "Lydia",
-      "last": "Cole",
+      "first_name": "Lydia",
+      "last_name": "Cole",
       "email": "Hassie_Watsica@gmail.com",
       "role": "user",
       "password": "b0P2IvEu_7lz3Cq",
       "hashedPassword": "$2a$10$OUlKeBom6O/nyLz.tJM/5eF4T5dA/8WQrpifAKxC8VomYVKbqvHPe"
     },
     {
-      "first": "Clark",
-      "last": "Doyle",
+      "first_name": "Clark",
+      "last_name": "Doyle",
       "email": "Damon.Pouros@yahoo.com",
       "role": "user",
       "password": "sqOJ4AIypRgErAd",
       "hashedPassword": "$2a$10$2UkUNqj14RgjFoaBSeFSyehduuk81yAAtkk0SOXZvtKqylSADnEdW"
     },
     {
-      "first": "Derek",
-      "last": "Shields",
+      "first_name": "Derek",
+      "last_name": "Shields",
       "email": "Stefanie_Berge67@yahoo.com",
       "role": "user",
       "password": "_1ya13nKHOaGxR6",
       "hashedPassword": "$2a$10$F80HzIVVhEYy1.r1gZgax.l2wH9Y5CPc5fNgSyRkBRT/3MghjYr0K"
     },
     {
-      "first": "Ubaldo",
-      "last": "Dickinson",
+      "first_name": "Ubaldo",
+      "last_name": "Dickinson",
       "email": "Lewis.Lowe@yahoo.com",
       "role": "user",
       "password": "3s1GOxq2OhLgb3J",
       "hashedPassword": "$2a$10$2QKikEIx0BHraBTU9mJZqOdzaXgTuqj7KJi3nLQqF3Di/y05oTv1K"
     },
     {
-      "first": "Holden",
-      "last": "Larson",
+      "first_name": "Holden",
+      "last_name": "Larson",
       "email": "Kennedy.Cummerata19@yahoo.com",
       "role": "user",
       "password": "yNOwkN_fkkcZekT",
       "hashedPassword": "$2a$10$WTxvZ643cwlwX8xDY8G0pen/TbT5g9SOMBgAdA/j2nUIu5L9QpbXu"
     },
     {
-      "first": "Bette",
-      "last": "Abernathy",
+      "first_name": "Bette",
+      "last_name": "Abernathy",
       "email": "Garret48@hotmail.com",
       "role": "user",
       "password": "e600uA596hfVbGy",
       "hashedPassword": "$2a$10$q1drQGwKFoV2bwcm4SIfYu/Upwhnd0L9yWv8FhO8TQvWsje.uslMK"
     },
     {
-      "first": "Karlee",
-      "last": "Crooks",
+      "first_name": "Karlee",
+      "last_name": "Crooks",
       "email": "Lonny_Brown@hotmail.com",
       "role": "user",
       "password": "yAG6AHKp_Z5m5iv",
       "hashedPassword": "$2a$10$VvqaD31TeAYJhr2Au/JliO38k01ffx2b.s9TpF7fofol4MrZx8i8C"
     },
     {
-      "first": "Joaquin",
-      "last": "Funk",
+      "first_name": "Joaquin",
+      "last_name": "Funk",
       "email": "Eliza_Windler@yahoo.com",
       "role": "user",
       "password": "rI3JNyfYW9YJDzM",
       "hashedPassword": "$2a$10$QgtHhurMnLnCAA66EX9S6ufINTsFXjLZCKjf3i1EA9F3BJTdyquuW"
     },
     {
-      "first": "Jeremie",
-      "last": "Kuhn",
+      "first_name": "Jeremie",
+      "last_name": "Kuhn",
       "email": "Garrison.Emmerich53@gmail.com",
       "role": "user",
       "password": "U5fNd6blMDsJV0D",
       "hashedPassword": "$2a$10$LE1bMTcCkO2hSTQpN92EFuXg2mqCcAAL75t8f5phr2HvU2Uzow6om"
     },
     {
-      "first": "Orlo",
-      "last": "Ortiz",
+      "first_name": "Orlo",
+      "last_name": "Ortiz",
       "email": "Rosina_Swift@gmail.com",
       "role": "user",
       "password": "i3PoeUXdA4hVHN6",
       "hashedPassword": "$2a$10$A8HlJSXNTEARwyMAfttYq.2PHW8ewJVGMgW3lGsnz9/J.ovK8AzSS"
     },
     {
-      "first": "Garry",
-      "last": "Vandervort",
+      "first_name": "Garry",
+      "last_name": "Vandervort",
       "email": "Amara19@gmail.com",
       "role": "user",
       "password": "Sp3c5KGTXMsekmD",
       "hashedPassword": "$2a$10$8FJwkU4cjpD9r2LAphQXb.bWkrLzvv7crR3WdaTyyEccalxhoOmIK"
     },
     {
-      "first": "Jarrett",
-      "last": "Jacobson",
+      "first_name": "Jarrett",
+      "last_name": "Jacobson",
       "email": "Mabelle.Roberts@yahoo.com",
       "role": "user",
       "password": "xype8nrOKy9qOLx",
       "hashedPassword": "$2a$10$RfqBibOtOQ4ZXBiiMKsyMepJFmum2AffAh0G7z1El7ITvRRm0TmSO"
     },
     {
-      "first": "Jensen",
-      "last": "Jacobi",
+      "first_name": "Jensen",
+      "last_name": "Jacobi",
       "email": "Darlene.Kuvalis46@hotmail.com",
       "role": "user",
       "password": "UHbylpKmnfbWMm3",
       "hashedPassword": "$2a$10$5IgUlC8G.8n5mWmhMGc6uOxDKHPlTvDbwtScyItl7CFXubUTC7nUe"
     },
     {
-      "first": "Wilburn",
-      "last": "Miller",
+      "first_name": "Wilburn",
+      "last_name": "Miller",
       "email": "Jules_Carroll47@hotmail.com",
       "role": "user",
       "password": "OMfdzKwG9_jx9X3",
       "hashedPassword": "$2a$10$A.mbMdRn9Lu/fPGASPMNHemztcPz0yYMOCExTqbMauS0iaPvPu3T6"
     },
     {
-      "first": "Fiona",
-      "last": "Runolfsson",
+      "first_name": "Fiona",
+      "last_name": "Runolfsson",
       "email": "Lizzie95@gmail.com",
       "role": "user",
       "password": "Gl7afUH9KovoSkX",
       "hashedPassword": "$2a$10$nUFayBBcxsH4AjYKwfy6jOmP5uAGuf1bnSFMTlV51jjkWVhzGERmq"
     },
     {
-      "first": "Doyle",
-      "last": "Hintz",
+      "first_name": "Doyle",
+      "last_name": "Hintz",
       "email": "Moshe64@gmail.com",
       "role": "user",
       "password": "eNJrK0spOrKD5PZ",
       "hashedPassword": "$2a$10$NRhgPzlVmnFQ8I1zjaqPte42Xl599qx1m.CVe/NY8l0OmgPlOE34W"
     },
     {
-      "first": "Millie",
-      "last": "Feil",
+      "first_name": "Millie",
+      "last_name": "Feil",
       "email": "Vivianne45@hotmail.com",
       "role": "user",
       "password": "cct5PL0MWxH0S01",
