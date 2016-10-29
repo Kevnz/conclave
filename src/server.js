@@ -9,10 +9,15 @@ const passport = require('passport');
 const strategy = require('./core/jwt-strategy');
 const graphqlHTTP = require('express-graphql');
 const ConclaveSchema = require('./schema');
+const session = require('express-session');
+const config = require('xtconf')();
+const flash = require('flash');
 
 const api = requiredir('./controllers/api/');
 
 const app = express();
+app.use(session(config.get('session')));
+app.use(flash());
 passport.use(strategy);
 app.use(passport.initialize());
 
