@@ -5,8 +5,8 @@ const messages2 = require('../fixtures/messages-fixture-2.json').messages;
 
 const mappedUsers = users.map((user) => {
   const fixed = {
-    first: user.first,
-    last: user.last,
+    first_name: user.first_name,
+    last_name: user.last_name,
     email: user.email,
     password: user.hashedPassword
   };
