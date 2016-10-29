@@ -2,12 +2,16 @@ const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt'));
 const bookshelf = require('./bookshelf');
 require('./topic');
+require('./message');
 
 module.exports = bookshelf.model('User', {
   tableName: 'users',
   idAttribute: 'id',
   topics: function topicRelation() {
     return this.hasMany('Topic', 'created_by');
+  },
+  messages: function messagesRelation() {
+    return this.hasMany('Message', 'created_by');
   },
   hidden: ['password']
 }, {
@@ -29,6 +33,6 @@ module.exports = bookshelf.model('User', {
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
-    return new this({ firstName, lastName, email, password: hashedPassword }).save();
+    return new this({ first: firstName, last: lastName, email, password: hashedPassword }).save();
   })
 });

@@ -25,5 +25,11 @@ module.exports = bookshelf.model('Topic', {
       }
     })
     .fetch();
+  }),
+  getTopLevel: Promise.method(function getTopics() {
+    return this.collection().query((qb) => {
+      qb.whereNull('parent_id');
+    })
+    .fetch();
   })
 });

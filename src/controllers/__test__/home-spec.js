@@ -35,7 +35,7 @@ describe('The Home Controller', () => {
         .send({ email, password: 'password' })
         .expect(304)
         .end((err2, res2) => {
-          assert.ok(res2.header.location === '/');
+          assert.ok(res2.header.location.indexOf('/?token') > -1, 'The location is wrong');
           done();
         });
     }).catch(() => {
