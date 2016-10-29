@@ -20,8 +20,10 @@ module.exports = bookshelf.model('User', {
       throw new Error('Email and password are both required');
     }
     return new this({ email: email.toLowerCase().trim() })
-      .fetch({ require: true })
+      .fetch()
       .tap(function tapUser(user) {
+        console.log('user', user);
+        if (user === null) return null;
         return bcrypt
           .compareAsync(password, user.get('password'))
           .then(function compareResponse(res) {
