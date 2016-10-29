@@ -15,18 +15,21 @@ module.exports = function homeController() {
   });
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    console.log('req body', req.body);
     User
       .login(email, password)
       .then((user) => {
+        if (user === null) {
+          req.flash('danger', 'There was a problem, please check your details and try again.');
+          res.redirect('/login');
+          return null;
+        }
         const payload = { id: user.id };
         const token = jwt.sign(payload, config.get('auth-secret'));
-        //res.json({ message: 'ok', token });
-
         res.redirect('/?token=' + token);
+        return null;
       })
       .catch((err) => {
-        console.log('err', err);
+        req.flash('danger', 'There was a problem, please check your details and try again.');
         res.redirect('/login');
       });
   });
