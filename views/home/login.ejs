@@ -2,6 +2,15 @@
 <div class="columns">
   <div class="column is-4 content">
     <h1>Login to use Conclave</h1>
+    <div>
+    <%
+    console.log(flash);
+    for (var message in flash) {
+      const item = flash[message];
+      %><div class="notification is-<%= item.type %>"><%= item.message %></div><%
+    }
+    %>
+    </div>
     <form method="POST">
       <label class="label">Email</label>
       <p class="control has-icon has-icon-right">
