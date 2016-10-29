@@ -17,18 +17,16 @@ module.exports = new GraphQLObjectType(BookshelfType({
   name: 'User',
   description: 'A User',
   fields: (model) => {
-    console.log('this type', this);
-    console.log('model', model);
     return {
       id: model.attr({
         type: new GraphQLNonNull(GraphQLInt),
         description: 'The id of the user.'
       }),
-      first: model.attr({
+      firstName: model.attr({
         type: GraphQLString,
         description: 'The first name of the user.'
       }),
-      last: model.attr({
+      lastName: model.attr({
         type: GraphQLString,
         description: 'The last name of the user.'
       }),
