@@ -4,7 +4,6 @@ const {
   GraphQLList,
   GraphQLSchema
 } = require('graphql');
-
 const UserType = require('./user-type');
 const TopicType = require('./topic-type');
 const MessageType = require('./message-type');
@@ -12,6 +11,10 @@ const User = require('../models/user');
 const Topic = require('../models/topic');
 const Message = require('../models/message');
 
+String.prototype.toUnderscore = function () {
+  // bust the funking graphql bookshelf lib forced naming
+  return this;
+};
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
