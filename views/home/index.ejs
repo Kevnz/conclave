@@ -2,7 +2,16 @@
 
 <%
 for (var i = 0; i < topics.length; i++) {
-  %><div><%=topics[i].title %></div><%
+  %><div><%=topics[i].title %>
+    <%
+for (var j = 0; j < topics[i].children.length; j++) {
+  %><div>&nbsp;&nbsp;<%=topics[i].children[j].title %>
+
+  </div><%
+}
+%>
+    %>
+  </div><%
 }
 %>
 <%- contentFor('pageTitle') %>
