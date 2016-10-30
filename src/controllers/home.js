@@ -3,12 +3,13 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const config = require('xtconf')();
 const User = require('../models/user');
-
+const MainTopics = require('../middleware/main-topics');
 const router = express.Router();
 
 module.exports = function homeController() {
-  router.get('/', (req, res) => {
-    res.render('home/index', { title: 'Conclave' });
+  router.get('/', MainTopics, (req, res) => {
+    console.log('render ender', res.locals.topics);
+    res.render('home/index', { title: 'Conclave', topics: res.locals.topics });
   });
   router.get('/login', (req, res) => {
     res.render('home/login', { title: 'Conclave' });

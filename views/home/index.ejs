@@ -1,3 +1,9 @@
 <h1>Conclave</h1>
+
+<%
+for (var i = 0; i < topics.length; i++) {
+  %><div><%=topics[i].title %></div><%
+}
+%>
 <%- contentFor('pageTitle') %>
 <%= title %>

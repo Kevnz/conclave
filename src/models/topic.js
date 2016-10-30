@@ -30,6 +30,8 @@ module.exports = bookshelf.model('Topic', {
     return this.collection().query((qb) => {
       qb.whereNull('parent_id');
     })
-    .fetch();
+    .fetch({
+      withRelated: ['children', 'creator']
+    });
   })
 });
