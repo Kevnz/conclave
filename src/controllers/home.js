@@ -4,16 +4,18 @@ const jwt = require('jsonwebtoken');
 const config = require('xtconf')();
 const User = require('../models/user');
 const MainTopics = require('../middleware/main-topics');
+const UserDetails = require('../middleware/user-details');
 const router = express.Router();
 
-module.exports = function homeController() {
-  router.get('/', MainTopics, (req, res) => {
-    console.log('render ender', res.locals.topics);
+module.exports = function homeController(passport) {
+  router.get('/', MainTopics, UserDetails, (req, res) => {
     res.render('home/index', { title: 'Conclave', topics: res.locals.topics });
   });
+
   router.get('/login', (req, res) => {
     res.render('home/login', { title: 'Conclave' });
   });
+
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
     User
@@ -26,7 +28,8 @@ module.exports = function homeController() {
         }
         const payload = { id: user.id };
         const token = jwt.sign(payload, config.get('auth-secret'));
-        res.redirect('/?token=' + token);
+        res.cookie('tkn', token, { expires: new Date(Date.now() + (24 * 60 * 1000)) });
+        res.redirect('/');
         return null;
       })
       .catch((err) => {
@@ -34,9 +37,15 @@ module.exports = function homeController() {
         res.redirect('/login');
       });
   });
+
   router.get('/register', (req, res) => {
     res.render('home/register', { title: 'Conclave' });
   });
+
+  router.get('/account', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.render('home/account', { title: 'Conclave' });
+  });
+
   router.post('/register', (req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
     User
@@ -46,5 +55,6 @@ module.exports = function homeController() {
     })
     .catch(err => next(err));
   });
+
   return router;
 };

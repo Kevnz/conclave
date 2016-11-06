@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const layouts = require('express-ejs-layouts');
 const home = require('./controllers/home');
@@ -12,6 +13,7 @@ const ConclaveSchema = require('./schema');
 const session = require('express-session');
 const config = require('xtconf')();
 const flash = require('flash');
+const userSession = require('./middleware/user-session');
 
 const api = requiredir('./controllers/api/');
 
@@ -28,16 +30,17 @@ app.use(layouts);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../', 'public')));
 app.use(favicon(path.join(__dirname, '../', '/public/favicons/favicon.ico')));
-
+app.use(userSession);
 app.use('/graphql', graphqlHTTP({
   schema: ConclaveSchema,
   graphiql: true,
   pretty: true
 }));
 
-app.use(home());
+app.use(home(passport));
 app.use('/api/topics', api.topics());
 app.use('/api/users', api.users());
 
