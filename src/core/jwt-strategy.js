@@ -1,25 +1,22 @@
 const passportJWT = require('passport-jwt');
 const User = require('../models/user');
 const config = require('xtconf')();
+const cookieExtractor = require('./cookie-extractor');
 
-const ExtractJwt = passportJWT.ExtractJwt;
 const JwtStrategy = passportJWT.Strategy;
-
-
 const options = {};
 
-options.jwtFromRequest = ExtractJwt.fromAuthHeader();
+options.jwtFromRequest = cookieExtractor;
 options.secretOrKey = config.get('auth-secret');
 
-const strategy = new JwtStrategy(options, (payload, next) => {
-  console.log('payload', payload);
-
+const strategy = new JwtStrategy(options, (payload, done) => {
   new User({ id: payload.id })
+    .fetch()
     .then((user) => {
-      next(null, user);
+      done(null, user.toJSON());
     })
     .catch((err) => {
-      next(err, false);
+      done(err, false);
     });
 });
 
