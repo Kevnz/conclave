@@ -9,7 +9,7 @@ module.exports = bookshelf.model('Topic', {
   creator: function () {
     return this.belongsTo('User', 'created_by');
   },
-  children: function() {
+  childTopics: function() {
     return this.hasMany('Topic', 'parent_id');
   },
   messages: function() {
@@ -31,7 +31,7 @@ module.exports = bookshelf.model('Topic', {
       qb.whereNull('parent_id');
     })
     .fetch({
-      withRelated: ['children', 'creator']
+      withRelated: ['childTopics', 'creator']
     });
   })
 });
