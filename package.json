@@ -16,7 +16,9 @@
     "fixtures": "node src/utils/fixtures.js",
     "precov": "export NODE_ENV=test",
     "cov": "nyc npm test",
-    "fe:build": "webpack ./src/ui/index.js ./public/js/bundle.js"
+    "fe:build": "webpack",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -66,6 +68,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
     "faker": "^3.1.0",
+    "getstorybook": "^1.6.1",
     "html-webpack-plugin": "^2.24.1",
     "js-object-pretty-print": "^0.2.0",
     "lorem-ipsum": "^1.0.3",
@@ -78,6 +81,7 @@
     "pluralize": "^3.0.0",
     "supertest": "^2.0.0",
     "webpack": "^1.13.3",
-    "yargs": "^6.0.0"
+    "yargs": "^6.0.0",
+    "@kadira/storybook": "^2.21.0"
   }
 }
