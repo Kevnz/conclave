@@ -1,15 +1,26 @@
 /* eslint new-cap: 0 */
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const conditional = require('express-conditional-middleware');
 const config = require('xtconf')();
 const User = require('../models/user');
 const MainTopics = require('../middleware/main-topics');
 const UserDetails = require('../middleware/user-details');
+const isAuth = require('../middleware/is-authed');
 const router = express.Router();
+const React = require('react');
+const ReactDOM = require('react-dom/server');
+const App = require('../ui/index').default;
 
 module.exports = function homeController(passport) {
-  router.get('/', MainTopics, UserDetails, (req, res) => {
-    res.render('home/index', { title: 'Conclave', topics: res.locals.topics });
+  router.get('/', MainTopics, isAuth(UserDetails), (req, res) => {
+    const state = {
+      topics:res.locals.topics
+    };
+    const exposedState = `window.__APP_STATE__=${JSON.stringify(state)};`;
+    console.log('App', App);
+    const markup = ReactDOM.renderToString(App({ topics: state.topics }));
+    res.render('home/index', { title: 'Conclave', topics: res.locals.topics, html: markup, state: exposedState });
   });
 
   router.get('/login', (req, res) => {

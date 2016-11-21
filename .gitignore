@@ -3,3 +3,5 @@ node_modules
 config
 coverage/*
 .nyc_output/*
+
+public/js/bundle.js
