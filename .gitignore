@@ -5,3 +5,6 @@ coverage/*
 .nyc_output/*
 
 public/js/bundle.js
+
+report
+.DS_Store

@@ -1,5 +1,5 @@
-const faker = require('faker');
-const lorem = require('lorem-ipsum');
+const faker = require('faker')
+const lorem = require('lorem-ipsum')
 
 module.exports = function messageGen(topic = 1, createdBy = 1, parent = null) {
   return {
@@ -7,6 +7,6 @@ module.exports = function messageGen(topic = 1, createdBy = 1, parent = null) {
     body: lorem({ count: 40, units: 'words' }),
     created_by: createdBy,
     topic_id: topic,
-    parent_id: parent
-  };
-};
+    parent_id: parent,
+  }
+}

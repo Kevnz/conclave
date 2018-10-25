@@ -1,21 +1,17 @@
-import React, { PropTypes } from 'react';
-import TopicListing from './components/topics';
+import React, { PropTypes } from 'react'
+import TopicListing from './components/topics'
 
 const MainApp = ({ topics }) => {
-  const listings = topics.map((topic, index) => <TopicListing {...topic} />);
-  return (
-    <div>
-      {listings}
-    </div>
-  );
-};
+  const listings = topics.map((topic, index) => <TopicListing {...topic} />)
+  return <div>{listings}</div>
+}
 
 MainApp.propTypes = {
-  topics: React.PropTypes.array
-};
+  topics: React.PropTypes.array,
+}
 
 MainApp.defaultProps = {
-  topics: []
-};
+  topics: [],
+}
 
-export default MainApp;
+export default MainApp
