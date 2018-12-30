@@ -1,6 +1,6 @@
 const topicFixtures = require('../../../fixtures/topics-fixture.json')
 const Topic = require('../topic')
-console.log('topicFixtures', topicFixtures)
+
 describe('The Topic Model', () => {
   describe('Top Level', () => {
     it('should return the lop level (null parent_id) topics ', () => {
@@ -14,7 +14,7 @@ describe('The Topic Model', () => {
           const fixtureCount = topicFixtures.filter(
             topic => topic.parent_id === null
           ).length
-          console.log('serializedTopics', serializedTopics)
+
           expect(serializedTopics.length === fixtureCount)
         })
     })
