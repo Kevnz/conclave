@@ -23,4 +23,13 @@ exports.seed = function(knex, Promise) {
             })
         )
     )
+    .then(() => {
+      return knex.schema.raw('ALTER SEQUENCE users_id_seq RESTART WITH 1000')
+    })
+    .then(() => {
+      return knex.schema.raw('ALTER SEQUENCE topics_id_seq RESTART WITH 1000')
+    })
+    .then(() => {
+      return knex.schema.raw('ALTER SEQUENCE messages_id_seq RESTART WITH 1000')
+    })
 }

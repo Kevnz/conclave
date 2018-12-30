@@ -1,4 +1,4 @@
-const bookshelf = require('./bookshelf')
+const bookshelf = require('../bookshelf')
 
 module.exports = bookshelf.model(
   'Message',
@@ -13,7 +13,7 @@ module.exports = bookshelf.model(
     },
     replies: function() {
       return this.hasMany('Message', 'parent_id')
-    },,
+    },
   },
   {
     getByTopic: async function getTopics(topicId) {

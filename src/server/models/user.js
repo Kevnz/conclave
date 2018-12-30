@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt')
 const bookshelf = require('../bookshelf')
 const { InvalidPasswordError } = require('../errors')
 // const email = require('../email')
-require('./candidate')
+require('./topic')
+require('./message')
 const saltRounds = 10
 
 /**

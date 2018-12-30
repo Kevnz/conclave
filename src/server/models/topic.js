@@ -1,38 +1,43 @@
 const bookshelf = require('../bookshelf')
 
+require('./user')
+require('./message')
 
-
-// require('./user')
-// require('./message')
-
-module.exports = bookshelf.model('Topic', {
-  tableName: 'topics',
-  idAttribute: 'id',
-  creator: function () {
-    return this.belongsTo('User', 'created_by');
+module.exports = bookshelf.model(
+  'Topic',
+  {
+    tableName: 'topics',
+    idAttribute: 'id',
+    creator: function() {
+      return this.belongsTo('User', 'created_by')
+    },
+    childTopics: function() {
+      return this.hasMany('Topic', 'parent_id')
+    },
+    messages: function() {
+      return this.hasMany('Message', 'topic_id')
+    },
   },
-  childTopics: function() {
-    return this.hasMany('Topic', 'parent_id');
-  },
-  messages: function() {
-    return this.hasMany('Message', 'topic_id');
+  {
+    getByParentId: async function getTopics(parentId) {
+      return this.collection()
+        .query(qb => {
+          if (parentId) {
+            qb.where('parent_id', parentId)
+          } else {
+            qb.whereNull('parent_id')
+          }
+        })
+        .fetch()
+    },
+    getTopLevel: async function getTopics() {
+      return this.collection()
+        .query(qb => {
+          qb.whereNull('parent_id')
+        })
+        .fetch({
+          withRelated: ['childTopics', 'creator'],
+        })
+    },
   }
-}, {
-  getByParentId: async function getTopics(parentId) {
-    return this.collection().query((qb) => {
-      if (parentId) {
-        qb.where('parent_id', parentId);
-      } else {
-        qb.whereNull('parent_id');
-      }
-    })
-    .fetch()
-  },
-  getTopLevel: async function getTopics() {
-    return this.collection().query((qb) => {
-      qb.whereNull('parent_id');
-    })
-    .fetch({
-      withRelated: ['childTopics', 'creator']
-    })
-  }
+)
