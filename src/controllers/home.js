@@ -1,15 +1,15 @@
 /* eslint new-cap: 0 */
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const conditional = require('express-conditional-middleware')
+
+const ReactDOM = require('react-dom/server')
 const config = require('xtconf')()
 const User = require('../models/user')
 const MainTopics = require('../middleware/main-topics')
 const UserDetails = require('../middleware/user-details')
 const isAuth = require('../middleware/is-authed')
 const router = express.Router()
-const React = require('react')
-const ReactDOM = require('react-dom/server')
+
 const App = require('../ui/index').default
 
 module.exports = function homeController(passport) {
@@ -34,12 +34,12 @@ module.exports = function homeController(passport) {
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body
-    console.log('email and password', { email, password })
+    console.info('email and password', { email, password })
     User.login(email, password)
       .then(user => {
-        console.log('? Login then')
+        console.info('? Login then')
         if (user === null) {
-          console.log('User is null')
+          console.info('User is null')
           req.flash(
             'danger',
             'There was a problem, please check your details and try again.'
@@ -55,7 +55,7 @@ module.exports = function homeController(passport) {
         res.redirect('/')
       })
       .catch(err => {
-        console.error('User login error')
+        console.error('User login error', err)
         req.flash(
           'danger',
           'There was a problem, please check your details and try again.'

@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const request = require('supertest')
 const assert = require('assert')
+const request = require('supertest')
 const faker = require('faker')
 const app = require('../../server')
 const User = require('../../models/user')
@@ -15,6 +15,7 @@ describe('The Home Controller', () => {
       .send({ email, firstName, lastName, password: 'password' })
       .expect(304)
       .end((err, res) => {
+        assert.ok(err === null)
         assert.ok(res.header.location === '/login')
         done()
       })
@@ -31,6 +32,7 @@ describe('The Home Controller', () => {
           .send({ email, password: 'password' })
           .expect(304)
           .end((err2, res2) => {
+            assert.ok(err2 === null)
             assert.ok(
               res2.header.location.indexOf('/') > -1,
               'The location is wrong'
@@ -54,6 +56,7 @@ describe('The Home Controller', () => {
           .send({ email, password: 'passwordx' })
           .expect(304)
           .end((err2, res2) => {
+            assert.ok(err2 === null)
             assert.ok(res2.header.location === '/login')
             done()
           })
