@@ -1,7 +1,0 @@
-node_modules
-*.log
-config
-coverage/*
-.nyc_output/*
-
-public/js/bundle.js
