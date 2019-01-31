@@ -6,11 +6,14 @@ module.exports = (id, role = 'user') => {
   const salt = bcrypt.genSaltSync(saltRounds)
   const password = faker.internet.password()
   const hashedPassword = bcrypt.hashSync(password, salt)
+  const firstName = faker.name.firstName()
+  const lastName = faker.name.lastName()
   return {
     id: id,
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email(),
+    firstName,
+    lastName,
+    email: faker.internet.email(firstName, lastName, 'example.com'),
+    username: faker.internet.userName(firstName, lastName).toLowerCase(),
     role,
     password,
     hashedPassword,

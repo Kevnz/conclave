@@ -8,7 +8,7 @@ module.exports = bookshelf.model(
   {
     tableName: 'topics',
     idAttribute: 'id',
-    creator: function() {
+    createdBy: function() {
       return this.belongsTo('User', 'created_by')
     },
     childTopics: function() {
@@ -28,7 +28,21 @@ module.exports = bookshelf.model(
             qb.whereNull('parent_id')
           }
         })
-        .fetch()
+        .fetch({
+          /*
+          withRelated: [
+            'childTopics',
+            'createdBy',
+            'messages',
+            'childTopics.createdBy',
+            'childTopics.childTopics',
+            'childTopics.childTopics.createdBy',
+            'childTopics.childTopics.messages',
+            'childTopics.childTopics.messages.createdBy',
+            'messages.createdBy',
+          ],
+          */
+        })
     },
     getTopLevel: async function getTopics() {
       return this.collection()
@@ -36,7 +50,7 @@ module.exports = bookshelf.model(
           qb.whereNull('parent_id')
         })
         .fetch({
-          withRelated: ['childTopics', 'creator'],
+          withRelated: ['childTopics', 'createdBy'],
         })
     },
   }

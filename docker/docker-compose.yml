@@ -8,3 +8,7 @@ services:
       POSTGRES_PASSWORD: dbpassword_password
     ports:
       - "5432:5432"
+  redis:
+    image: redis:4
+    ports:
+      - "6379:6379"

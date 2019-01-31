@@ -5,7 +5,7 @@ module.exports = bookshelf.model(
   {
     tableName: 'messages',
     idAttribute: 'id',
-    creator: function() {
+    createdBy: function() {
       return this.belongsTo('User', 'created_by')
     },
     topic: function() {
@@ -16,7 +16,7 @@ module.exports = bookshelf.model(
     },
   },
   {
-    getByTopic: async function getTopics(topicId) {
+    getByTopic: async function getByTopic(topicId) {
       return this.collection()
         .query(qb => {
           if (topicId) {
@@ -24,6 +24,13 @@ module.exports = bookshelf.model(
           } else {
             qb.whereNull('topic_id')
           }
+        })
+        .fetch()
+    },
+    getReplies: async function getReplies(parentId) {
+      return this.collection()
+        .query(qb => {
+          qb.where('parent_id', parentId)
         })
         .fetch()
     },

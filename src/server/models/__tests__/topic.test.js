@@ -2,6 +2,13 @@ const topicFixtures = require('../../../fixtures/topics-fixture.json')
 const Topic = require('../topic')
 
 describe('The Topic Model', () => {
+  it('should match the snapshopt', async () => {
+    const topic = await Topic.where({ id: 1 }).fetch()
+    const snapshotTopic = topic.toJSON()
+    //  delete snapshotTopic.created_at
+    //  delete snapshotTopic.updated_at
+    expect(snapshotTopic).toMatchSnapshot()
+  })
   describe('Top Level', () => {
     it('should return the lop level (null parent_id) topics ', () => {
       return Topic.collection()
@@ -30,16 +37,16 @@ describe('The Topic Model', () => {
     it('should return children and created when fetched', () => {
       return Topic.where({ id: 1 })
         .fetch({
-          withRelated: ['childTopics', 'creator'],
+          withRelated: ['childTopics', 'createdBy'],
         })
         .then(topic => {
           const childrenCount = topic.toJSON().childTopics.length
-          const creator = topic.toJSON().creator
+          const createdBy = topic.toJSON().createdBy
           const fixtureChildrenCount = topicFixtures.filter(
             top => top.parent_id === 1
           ).length
           expect(childrenCount === fixtureChildrenCount)
-          expect(creator.id === 1)
+          expect(createdBy.id === 1)
         })
     })
   })

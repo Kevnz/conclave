@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The User Model should match the snapshopt 1`] = `
+Object {
+  "created_at": 2019-01-16T18:28:40.360Z,
+  "email": "Parker.Wolff80@example.com",
+  "firstName": "Parker",
+  "id": 1,
+  "lastName": "Wolff",
+  "password": "$2b$10$Etmy/QU5ibPO/GMzh0Q7ZemGG605JtQ9jOZwOyxsxA/5Mp41ltULW",
+  "role": "user",
+  "token": null,
+  "updated_at": 2019-01-16T18:28:40.360Z,
+  "username": "parker_wolff35",
+}
+`;

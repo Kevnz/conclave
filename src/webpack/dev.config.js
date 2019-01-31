@@ -1,9 +1,14 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const baseConfig = require('./config')
 
 const devConfig = {
   plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Custom template',

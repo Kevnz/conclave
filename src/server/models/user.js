@@ -1,5 +1,6 @@
 /* eslint-disable spellcheck/spell-checker */
 const bcrypt = require('bcrypt')
+const Joi = require('joi')
 const bookshelf = require('../bookshelf')
 const { InvalidPasswordError } = require('../errors')
 // const email = require('../email')
@@ -7,6 +8,24 @@ require('./topic')
 require('./message')
 const saltRounds = 10
 
+const schema = {
+  required: {
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    username: Joi.string().required(),
+    email: Joi.string()
+      .email()
+      .required(),
+  },
+  optional: {
+    password: Joi.string().optional(),
+  },
+  base: {
+    id: Joi.any().optional(),
+    created_at: Joi.date().optional(),
+    updated_at: Joi.date().optional(),
+  },
+}
 /**
  * Class representing a User.
  * @class User
@@ -50,15 +69,28 @@ module.exports = bookshelf.model(
       }
       return user
     },
-    register: async function({ firstName, lastName, email, password }) {
+    getById: async function(id) {
+      const user = new this({ id })
+      await user.fetch()
+      return user
+    },
+    register: async function({
+      firstName,
+      lastName,
+      email,
+      password,
+      username,
+    }) {
       const hashedPassword = await bcrypt.hash(password, saltRounds)
 
       return new this({
         firstName,
         lastName,
         email: email.toLowerCase().trim(),
+        username,
         password: hashedPassword,
       }).save()
     },
+    schema,
   }
 )

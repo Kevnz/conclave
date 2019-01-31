@@ -1,72 +1,177 @@
 [
   {
     "id": 1,
-    "title": "Profit-focused upward-trending capability",
-    "description": "strategic empower functionalities",
-    "created_by": 16,
-    "parent_id": null
-  },
-  {
-    "id": 2,
-    "title": "Robust 24/7 process improvement",
-    "description": "vertical mesh e-services",
-    "created_by": 11,
-    "parent_id": null
-  },
-  {
-    "id": 3,
-    "title": "Multi-channelled client-server installation",
-    "description": "out-of-the-box utilize vortals",
+    "title": "Polarised holistic data-warehouse",
+    "description": "holistic implement channels",
     "created_by": 7,
     "parent_id": null
   },
   {
+    "id": 2,
+    "title": "Open-architected client-driven artificial intelligence",
+    "description": "rich brand interfaces",
+    "created_by": 17,
+    "parent_id": null
+  },
+  {
+    "id": 3,
+    "title": "Fully-configurable interactive implementation",
+    "description": "transparent redefine technologies",
+    "created_by": 1,
+    "parent_id": null
+  },
+  {
     "id": 4,
-    "title": "Cross-group regional software",
-    "description": "cutting-edge scale deliverables",
-    "created_by": 11,
+    "title": "Front-line client-driven algorithm",
+    "description": "intuitive redefine initiatives",
+    "created_by": 17,
     "parent_id": null
   },
   {
     "id": 5,
-    "title": "Visionary 6th generation definition",
-    "description": "24/365 transform communities",
-    "created_by": 20,
+    "title": "De-engineered even-keeled internet solution",
+    "description": "B2B scale action-items",
+    "created_by": 4,
     "parent_id": null
   },
   {
     "id": 6,
-    "title": "Persistent methodical analyzer",
-    "description": "frictionless seize bandwidth",
-    "created_by": 9,
-    "parent_id": 2
+    "title": "Inverse contextually-based synergy",
+    "description": "proactive reintermediate technologies",
+    "created_by": 15,
+    "parent_id": 3
   },
   {
     "id": 7,
-    "title": "Extended bandwidth-monitored model",
-    "description": "impactful syndicate functionalities",
-    "created_by": 4,
+    "title": "Cloned bottom-line service-desk",
+    "description": "dynamic engage eyeballs",
+    "created_by": 13,
     "parent_id": 3
   },
   {
     "id": 8,
-    "title": "Fundamental hybrid internet solution",
-    "description": "web-enabled embrace action-items",
+    "title": "Organized secondary system engine",
+    "description": "distributed streamline e-markets",
     "created_by": 4,
-    "parent_id": 5
+    "parent_id": 3
   },
   {
     "id": 9,
-    "title": "Public-key fresh-thinking open system",
-    "description": "world-class engineer infomediaries",
-    "created_by": 11,
+    "title": "Secured leading edge synergy",
+    "description": "24/365 evolve networks",
+    "created_by": 17,
     "parent_id": 2
   },
   {
     "id": 10,
-    "title": "Reactive eco-centric complexity",
-    "description": "bricks-and-clicks morph applications",
+    "title": "Object-based user-facing algorithm",
+    "description": "impactful embrace methodologies",
+    "created_by": 7,
+    "parent_id": 2
+  },
+  {
+    "id": 11,
+    "title": "Team-oriented dedicated adapter",
+    "description": "e-business maximize communities",
+    "created_by": 11,
+    "parent_id": 9
+  },
+  {
+    "id": 12,
+    "title": "Profit-focused client-driven service-desk",
+    "description": "frictionless morph users",
+    "created_by": 16,
+    "parent_id": 8
+  },
+  {
+    "id": 13,
+    "title": "Exclusive systematic forecast",
+    "description": "end-to-end transform communities",
+    "created_by": 19,
+    "parent_id": 8
+  },
+  {
+    "id": 14,
+    "title": "Enhanced coherent array",
+    "description": "innovative envisioneer markets",
+    "created_by": 7,
+    "parent_id": 7
+  },
+  {
+    "id": 15,
+    "title": "Programmable human-resource architecture",
+    "description": "vertical reinvent action-items",
+    "created_by": 17,
+    "parent_id": 8
+  },
+  {
+    "id": 16,
+    "title": "Robust motivating budgetary management",
+    "description": "ubiquitous cultivate web-readiness",
+    "created_by": 2,
+    "parent_id": 9
+  },
+  {
+    "id": 17,
+    "title": "Secured contextually-based orchestration",
+    "description": "intuitive mesh e-commerce",
+    "created_by": 15,
+    "parent_id": 6
+  },
+  {
+    "id": 18,
+    "title": "Cross-platform systematic archive",
+    "description": "dot-com syndicate action-items",
+    "created_by": 17,
+    "parent_id": 7
+  },
+  {
+    "id": 19,
+    "title": "Object-based asymmetric software",
+    "description": "intuitive incentivize paradigms",
+    "created_by": 3,
+    "parent_id": 8
+  },
+  {
+    "id": 20,
+    "title": "Intuitive incremental adapter",
+    "description": "innovative iterate users",
     "created_by": 8,
-    "parent_id": 4
+    "parent_id": 8
+  },
+  {
+    "id": 21,
+    "title": "Pre-emptive 3rd generation hardware",
+    "description": "extensible iterate solutions",
+    "created_by": 5,
+    "parent_id": 6
+  },
+  {
+    "id": 22,
+    "title": "Vision-oriented global workforce",
+    "description": "synergistic syndicate technologies",
+    "created_by": 14,
+    "parent_id": 8
+  },
+  {
+    "id": 23,
+    "title": "Implemented didactic middleware",
+    "description": "synergistic repurpose supply-chains",
+    "created_by": 7,
+    "parent_id": 9
+  },
+  {
+    "id": 24,
+    "title": "Ameliorated bottom-line archive",
+    "description": "open-source empower partnerships",
+    "created_by": 15,
+    "parent_id": 7
+  },
+  {
+    "id": 25,
+    "title": "Open-source coherent open architecture",
+    "description": "open-source expedite solutions",
+    "created_by": 16,
+    "parent_id": 6
   }
 ]

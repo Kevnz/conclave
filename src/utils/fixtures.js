@@ -17,12 +17,15 @@ for (let i = 1; i < 6; i++) {
 for (let i = 6; i < 11; i++) {
   topics.push(topicGenerator(i, random(1, 20), random(1, 5)))
 }
+for (let i = 11; i < 26; i++) {
+  topics.push(topicGenerator(i, random(1, 20), random(6, 10)))
+}
 for (let i = 1; i < 101; i++) {
   messages.push(messageGenerator(i, random(1, 5), random(1, 20)))
 }
 for (let i = 101; i < 201; i++) {
   messages.push(
-    messageGenerator(i, random(1, 10), random(1, 20), random(1, 100))
+    messageGenerator(i, random(1, 25), random(1, 20), random(1, 100))
   )
 }
 const userContent = JSON.stringify(users, null, 2)

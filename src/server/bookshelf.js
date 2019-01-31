@@ -7,5 +7,6 @@ const bookshelf = Bookshelf(knex)
 
 bookshelf.plugin('registry')
 bookshelf.plugin('virtuals')
-
+bookshelf.plugin('visibility')
+// bookshelf.plugin(require('./utils/model').pluggable)
 module.exports = bookshelf
