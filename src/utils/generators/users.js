@@ -12,7 +12,7 @@ module.exports = (id, role = 'user') => {
     id: id,
     firstName,
     lastName,
-    email: faker.internet.email(firstName, lastName, 'example.com'),
+    email: faker.internet.email(firstName, lastName, 'example.com').toLowerCase(),
     username: faker.internet.userName(firstName, lastName).toLowerCase(),
     role,
     password,
