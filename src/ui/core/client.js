@@ -10,7 +10,7 @@ const middlewareLink = setContext(() => ({
 }))
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4001/graphql',
+  uri: 'http://localhost:8080/graphql',
 })
 
 const link = middlewareLink.concat(httpLink)
