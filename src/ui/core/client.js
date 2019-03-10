@@ -3,9 +3,12 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { setContext } from 'apollo-link-context'
 
+// eslint-disable-next-line no-undef
+const token = localStorage.getItem('auth_token')
+
 const middlewareLink = setContext(() => ({
   headers: {
-    // 'X-Api-Key': 'YOUR_API_KEY'
+    authorization: token ? `Bearer ${token}` : '',
   },
 }))
 
