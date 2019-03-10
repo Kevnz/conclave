@@ -5,9 +5,12 @@ const { getToken } = require('../utils/auth')
 const User = require('../models/user')
 
 const getUser = () => {
+  const firstName= faker.name.firstName()
+  const lastName = faker.name.lastName()
   return {
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
+    firstName,
+    lastName,
+    username: faker.internet.userName(firstName, lastName).toLowerCase(),
     email: faker.internet.email().toLowerCase(),
     password: faker.internet.password(),
   }
@@ -24,12 +27,15 @@ describe('The Server GraphQL responses', () => {
   })
 
   it('should create a user', async () => {
+    const firstName= faker.name.firstName()
+    const lastName = faker.name.lastName()
     const query = {
       operationName: 'Signup',
       variables: {
         newUserInput: {
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
+          firstName,
+          lastName,
+          username: faker.internet.userName(firstName, lastName).toLowerCase(),
           email: faker.internet.email().toLowerCase(),
           password: faker.internet.password(),
         },
@@ -46,9 +52,9 @@ describe('The Server GraphQL responses', () => {
       payload: JSON.stringify(query),
     }
     const response = await server.inject(injectOptions)
-
+    console.log('response', response.payload)
     const data = JSON.parse(response.payload).data
-
+    console.log('data', data)
     expect(data.signup.token).not.toBeNull()
   })
   it('should let a user login', async () => {
