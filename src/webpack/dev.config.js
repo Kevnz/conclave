@@ -1,4 +1,5 @@
-const webpack = require('webpack')
+const deepExtend = require('deep-extend')
+const merge = require('merge-deep')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //  .BundleAnalyzerPlugin
@@ -21,7 +22,7 @@ const devConfig = {
   devtool: 'cheap-module-source-map',
   devServer: {
     contentBase: './public',
-    hot: false,
+    hot: true,
     historyApiFallback: true,
     proxy: {
       '/graphql': 'http://localhost:4567/',
@@ -29,7 +30,4 @@ const devConfig = {
   },
 }
 
-module.exports = {
-  ...baseConfig,
-  ...devConfig,
-}
+module.exports = merge(baseConfig, devConfig)
