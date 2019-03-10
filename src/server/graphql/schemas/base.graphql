@@ -70,6 +70,14 @@ input LoginInput {
   password: String!
 }
 
+"""
+The **TopicInput** is the data required for a user to login
+"""
+input TopicInput {
+  title: String!
+  description: String!
+  parentId: Int
+}
 type Mutation {
 
   """
@@ -83,4 +91,9 @@ type Mutation {
   **login** allows a user to authenticate
   """
   login(loginInput: LoginInput!): AuthPayload!
+
+  """
+  **addTopic** creates a new topic
+  """
+  addTopic(topicInput: TopicInput!): Topic!
 }
