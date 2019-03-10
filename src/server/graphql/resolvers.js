@@ -41,6 +41,11 @@ const resolvers = {
       const tops = await Topic.getByParentId(args.topicId)
       return tops.toJSON()
     },
+    topTopics: async (root, args, context, info) => {
+      const tops = await Topic.getTopLevel()
+      return tops.toJSON()
+    },
+
     user: async (root, args, context, info) => {
       const user = await new User({ id: getUserIdFromContext(context) }).fetch()
       return user.toJSON()

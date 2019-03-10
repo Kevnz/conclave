@@ -27,6 +27,7 @@ type Message {
 
 type Query {
   topics(topicId: ID): [Topic]
+  topTopics: [Topic]
   messages(topicId: ID!): [Message]
   user(token: ID): User
 }
