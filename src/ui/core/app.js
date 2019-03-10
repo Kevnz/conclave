@@ -5,7 +5,7 @@ import { hot } from 'react-hot-loader/root'
 import client from './client'
 import { Layout } from './layout'
 import { AuthProvider } from './context/auth'
-import { ErrorBoundary } from './boundry'
+import { ErrorBoundary } from './boundary'
 
 const About = React.lazy(() => import('../features/about'))
 const Home = React.lazy(() => import('../features/home'))
