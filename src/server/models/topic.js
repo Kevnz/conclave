@@ -53,5 +53,26 @@ module.exports = bookshelf.model(
           withRelated: ['childTopics', 'createdBy'],
         })
     },
+    addTopic: async function add({
+      title,
+      description,
+      // eslint-disable-next-line camelcase
+      created_by,
+      // eslint-disable-next-line camelcase
+      parent_id,
+    }) {
+      console.info('topic', {
+        title,
+        description,
+        created_by,
+        parent_id,
+      })
+      return new this({
+        title,
+        description,
+        created_by,
+        parent_id,
+      }).save()
+    },
   }
 )

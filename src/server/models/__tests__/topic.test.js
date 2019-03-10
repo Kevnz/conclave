@@ -1,3 +1,4 @@
+const faker = require('faker')
 const topicFixtures = require('../../../fixtures/topics-fixture.json')
 const Topic = require('../topic')
 
@@ -48,6 +49,16 @@ describe('The Topic Model', () => {
           expect(childrenCount === fixtureChildrenCount)
           expect(createdBy.id === 1)
         })
+    })
+  })
+  describe('Adding a topic', () => {
+    it('should add a topic at the root level', async () => {
+      const topic = await Topic.addTopic({
+        title: faker.company.catchPhrase(),
+        description: faker.company.bs(),
+        created_by: 1,
+      })
+      expect(topic.toJSON()).not.toBeNull()
     })
   })
 })
