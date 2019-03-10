@@ -1,7 +1,5 @@
 node_modules
+dist
+.cache
+.DS_Store
 *.log
-config
-coverage/*
-.nyc_output/*
-
-public/js/bundle.js

@@ -1,8 +1,22 @@
 {
-      "presets": ["es2015", "es2016", "es2017", "react"],
-      "env": {
-        "test": {
-          "plugins": ["istanbul"]
+  "plugins": [
+    "babel-plugin-styled-components",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-dynamic-import"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": 63,
+          "browsers": [
+            "last 2 versions",
+            "safari 12"
+          ]
         }
       }
+    ],
+    "@babel/preset-react"
+  ]
 }

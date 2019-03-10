@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "firstName": "Fay",
+    "lastName": "Hermann",
+    "email": "fay_hermann42@example.com",
+    "username": "fay.hermann",
+    "role": "user",
+    "password": "i_Rt5mwzz2Yo6AX",
+    "hashedPassword": "$2b$10$yVM8ALUwgB7zTqjdfNIbxu1v0MfLLQUtHK/c9xQxAAH5fmXJgeWC6"
+  },
+  {
+    "id": 2,
+    "firstName": "Kara",
+    "lastName": "Durgan",
+    "email": "kara.durgan@example.com",
+    "username": "kara.durgan60",
+    "role": "user",
+    "password": "LisUWMZNdXLukfl",
+    "hashedPassword": "$2b$10$KihAHzReU7QrR6EWDZrjreyjI3yqQv1PD5WO0M8OfFkkFto7Zhl/i"
+  },
+  {
+    "id": 3,
+    "firstName": "Zoila",
+    "lastName": "Dietrich",
+    "email": "zoila45@example.com",
+    "username": "zoila_dietrich",
+    "role": "user",
+    "password": "AGPRTn4fF5MKfXt",
+    "hashedPassword": "$2b$10$m0xcGowZ.RISFmD6ODpyW.1/EjTyIo1CVpZOl3.noOO8VH08XdhpS"
+  },
+  {
+    "id": 4,
+    "firstName": "Darren",
+    "lastName": "DuBuque",
+    "email": "darren.dubuque@example.com",
+    "username": "darren_dubuque26",
+    "role": "user",
+    "password": "pnZg08rOkJqpH2i",
+    "hashedPassword": "$2b$10$Tbrkhx36V2gigADjR1IIguC8WJLYyaPVfY61v5Xabi5a1b6Q.1PPe"
+  },
+  {
+    "id": 5,
+    "firstName": "Augusta",
+    "lastName": "Carroll",
+    "email": "augusta43@example.com",
+    "username": "augusta_carroll49",
+    "role": "user",
+    "password": "2yvzcYKHGjvBaQk",
+    "hashedPassword": "$2b$10$EGzfgctDFDDSpFL/mXqRY..FakJzBmmyaB6dRkQ4NduTe0Sc7Body"
+  },
+  {
+    "id": 6,
+    "firstName": "Robb",
+    "lastName": "Rempel",
+    "email": "robb.rempel58@example.com",
+    "username": "robb.rempel30",
+    "role": "user",
+    "password": "z0QrTKihmA9FISt",
+    "hashedPassword": "$2b$10$CF3lYWu.jDJF3DKE/hHbseAw7iAgvC5vi.IzM2KdLmHJT6/lRrkOW"
+  },
+  {
+    "id": 7,
+    "firstName": "Jacky",
+    "lastName": "Roberts",
+    "email": "jacky77@example.com",
+    "username": "jacky41",
+    "role": "user",
+    "password": "peefreU0tlHuF1A",
+    "hashedPassword": "$2b$10$vU6uQh59eaSBOBltRuC16uTXBEdrFYtyaiMQt2gJg/ZY23eA.LA4W"
+  },
+  {
+    "id": 8,
+    "firstName": "Antwon",
+    "lastName": "Schimmel",
+    "email": "antwon62@example.com",
+    "username": "antwon81",
+    "role": "user",
+    "password": "nhOe8LX4b4Rpdtc",
+    "hashedPassword": "$2b$10$J3knFmy7sMUyfzq4CXCsTeZYvIO9TWUwcemaIi3upi.2cyN.ViBnC"
+  },
+  {
+    "id": 9,
+    "firstName": "Ramiro",
+    "lastName": "Robel",
+    "email": "ramiro.robel@example.com",
+    "username": "ramiro31",
+    "role": "user",
+    "password": "tnkQRL2hAuJWkgK",
+    "hashedPassword": "$2b$10$eDWLDaGlFN6o8iyfz8RUNuskbKD4Ae1d4jPP6lG.U1ct39FE8KpI2"
+  },
+  {
+    "id": 10,
+    "firstName": "Kailey",
+    "lastName": "Pollich",
+    "email": "kailey16@example.com",
+    "username": "kailey_pollich",
+    "role": "user",
+    "password": "bSfvPGvAE763w4d",
+    "hashedPassword": "$2b$10$nWT5yqKP2F8PB2qbG/ST6OuhbcNJqQXoerC0TbEmHaY/STpFyGlqC"
+  },
+  {
+    "id": 11,
+    "firstName": "Jeremie",
+    "lastName": "Ebert",
+    "email": "jeremie.ebert82@example.com",
+    "username": "jeremie79",
+    "role": "user",
+    "password": "HdKedKVMTI68Wq6",
+    "hashedPassword": "$2b$10$7sIhj5IBV2ODK.XRZl42Ke9rqaoz4W9sotZWQsDMH1e1DfB/YFg/u"
+  },
+  {
+    "id": 12,
+    "firstName": "America",
+    "lastName": "Hane",
+    "email": "america80@example.com",
+    "username": "america_hane4",
+    "role": "user",
+    "password": "zq_LOpExY3wqW8J",
+    "hashedPassword": "$2b$10$AF5aWAeA9dJV/idBaliNR.shnq2bnms1ZENiuff4pDVvNZZP1Tp8G"
+  },
+  {
+    "id": 13,
+    "firstName": "Barney",
+    "lastName": "Ritchie",
+    "email": "barney.ritchie@example.com",
+    "username": "barney_ritchie38",
+    "role": "user",
+    "password": "Kq_2If8U9hU6Duh",
+    "hashedPassword": "$2b$10$dAFCrNPeN/QmSrwTO7NxTeJTPILQDeen0wLW7cVO7KL4gngjjoCz."
+  },
+  {
+    "id": 14,
+    "firstName": "Valentina",
+    "lastName": "Kassulke",
+    "email": "valentina.kassulke@example.com",
+    "username": "valentina.kassulke48",
+    "role": "user",
+    "password": "nVjgRcJItdBDcgI",
+    "hashedPassword": "$2b$10$WkYEUQWwT8KfRHzX9hauQu8g5g/SLHUfcq2LB.AGA3YtI4TWhPPZm"
+  },
+  {
+    "id": 15,
+    "firstName": "Mylene",
+    "lastName": "Powlowski",
+    "email": "mylene98@example.com",
+    "username": "mylene.powlowski89",
+    "role": "user",
+    "password": "X0HLl0_Qs5lKAcv",
+    "hashedPassword": "$2b$10$YxdRQaBkRYadL3lFe/HRmOKWEbjY1Z/h2C5YHL/qTHbU.z4OOK93S"
+  },
+  {
+    "id": 16,
+    "firstName": "Sigrid",
+    "lastName": "Cartwright",
+    "email": "sigrid.cartwright@example.com",
+    "username": "sigrid.cartwright",
+    "role": "user",
+    "password": "p4kY94PKe2vjrEO",
+    "hashedPassword": "$2b$10$aTvbDv/X8lVAOxKbTHMsgeQzb4i2HSCxBrVkqT3fs/Eo6l79pri4a"
+  },
+  {
+    "id": 17,
+    "firstName": "Shakira",
+    "lastName": "Littel",
+    "email": "shakira.littel@example.com",
+    "username": "shakira.littel",
+    "role": "user",
+    "password": "7oUMvBPRTIW_4yr",
+    "hashedPassword": "$2b$10$CaAXd3C4zIOOMkMVSBXL7eRTIQMZz.RCf7QaUcLcI9XkOIat/NxC6"
+  },
+  {
+    "id": 18,
+    "firstName": "Eulalia",
+    "lastName": "Mante",
+    "email": "eulalia_mante78@example.com",
+    "username": "eulalia.mante",
+    "role": "user",
+    "password": "qvdPOhhP2d2a8Bm",
+    "hashedPassword": "$2b$10$O5AoDwblQ/bEI2l9sXoA6eCJpcsVHDLGfidJ6YRnCT3Enrzysmr7."
+  },
+  {
+    "id": 19,
+    "firstName": "Libbie",
+    "lastName": "Stiedemann",
+    "email": "libbie.stiedemann@example.com",
+    "username": "libbie.stiedemann",
+    "role": "user",
+    "password": "uRzyh4zoKXChFSD",
+    "hashedPassword": "$2b$10$f1i0XhXzT6D/Ikq6qc0T2edtYJ9AJuKXcjxypqT0JeoI1hB5q8xZy"
+  },
+  {
+    "id": 20,
+    "firstName": "Shana",
+    "lastName": "Bergnaum",
+    "email": "shana64@example.com",
+    "username": "shana.bergnaum9",
+    "role": "user",
+    "password": "TtMMIANaM_YJuL7",
+    "hashedPassword": "$2b$10$oWFwsucAoHumsQuimGu9Y.1FBNVusMWe1bpTsdEGI9iJsyY5PLKgO"
+  }
+]

@@ -1,11 +1,9 @@
-const faker = require('faker');
-const bcrypt = require('bcrypt');
+const faker = require('faker')
 
-module.exports = function (createdBy = 1) {
-  return {
-    title: faker.company.catchPhrase(),
-    description: faker.company.bs(),
-    created_by: createdBy
-  };
-};
-
+module.exports = (id, createdBy = 1, parent_id = null) => ({
+  id: id,
+  title: faker.company.catchPhrase(),
+  description: faker.company.bs(),
+  created_by: createdBy,
+  parent_id: parent_id,
+})

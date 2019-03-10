@@ -1,0 +1,52 @@
+query topics($topicId: ID) {
+	topics(topicId: $topicId) {
+    id
+    title
+    description
+    createdBy {
+      id
+      email
+      username
+    }
+    childTopics {
+      id
+      title
+      description
+      childTopics {
+        id
+        title
+        description
+        messages {
+          id
+          title
+          body
+          createdBy {
+            id
+            email
+            username
+          }
+        }
+      }
+      messages {
+        id
+        title
+        body
+        createdBy {
+          id
+          email
+          username
+        }
+      }
+    }
+    messages {
+      id
+      title
+      body
+      createdBy {
+        id
+        email
+        username
+	    }
+    }
+  }
+}

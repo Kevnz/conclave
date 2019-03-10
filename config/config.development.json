@@ -1,0 +1,21 @@
+{
+  "database": {
+    "client": "pg",
+    "connection": {
+      "database": "dbuser",
+      "user": "dbuser",
+      "password": "dbpassword_password"
+    },
+    "pool": {
+      "min": 2,
+      "max": 10
+    },
+    "migrations": {
+      "directory": "./src/migrations"
+    },
+    "seeds": {
+      "directory": "./src/seeds"
+    }
+  },
+  "APP_SECRET": "do not tell anyone"
+}
