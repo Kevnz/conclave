@@ -5,8 +5,10 @@ import { action } from '@storybook/addon-actions'
 import { linkTo } from '@storybook/addon-links'
 
 import { Button, Welcome } from '@storybook/react/demo'
-
+import './style.css'
 import Topic from '../src/ui/components/topic'
+import { LoginInput } from '../src/ui/components/login'
+
 const data = require('./data-main.json').data
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
@@ -14,7 +16,14 @@ storiesOf('Welcome', module).add('to Storybook', () => (
 
 storiesOf('Button', module)
   .add('with text', () => (
-    <Button onClick={action('clicked')}>Hello Button</Button>
+    <Button
+      onClick={e => {
+        e.preventDefault()
+        return action('clicked')
+      }}
+    >
+      Hello Button
+    </Button>
   ))
   .add('with some emoji', () => (
     <Button onClick={action('clicked')}>
@@ -36,3 +45,7 @@ storiesOf('Topics', module)
     const topic = data.topics[1]
     return <Topic level={0} {...topic} />
   })
+
+storiesOf('Login', module).add('with no onSubmit', () => {
+  return <LoginInput />
+})
