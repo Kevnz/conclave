@@ -23,12 +23,7 @@ module.exports = {
     extensions: ['*', '.mjs', '.js', '.jsx'],
     modules: ['node_modules', 'src'],
     alias: {
-      '_variables.sass': path.resolve(
-        __dirname,
-        '../',
-        'ui',
-        '_variables.sass'
-      ),
+      'react-dom': '@hot-loader/react-dom',
     },
   },
   output: {

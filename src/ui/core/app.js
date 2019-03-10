@@ -1,6 +1,7 @@
 import React from 'react'
 import { ApolloProvider } from 'react-apollo-hooks'
 import { Router } from '@reach/router'
+import { hot } from 'react-hot-loader/root'
 import client from './client'
 import { Layout } from './layout'
 import { AuthProvider } from './context/auth'
@@ -36,4 +37,4 @@ export const App = () => {
   )
 }
 
-export default App
+export default hot(App)
