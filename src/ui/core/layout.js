@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { navigate } from '@reach/router'
+import withStyles from 'react-jss'
 import { AccountLink } from '../components/account-link'
+import { appStyles } from '../styles/app'
 import { AuthContext } from './context/auth'
 
-export const Layout = ({ children }) => {
+const BaseLayout = ({ children, classes }) => {
   const { state, dispatch } = useContext(AuthContext)
   return (
-    <main>
+    <main className={classes.appBase}>
       <header>
         <h1>The Conclave</h1>
         <nav>
@@ -60,5 +62,6 @@ export const Layout = ({ children }) => {
     </main>
   )
 }
+export const Layout = withStyles(appStyles)(BaseLayout)
 
 export default Layout
