@@ -86,6 +86,15 @@ const resolvers = {
         user: user.toJSON(),
       }
     },
+    addTopic: async (root, args, context, info) => {
+      const userId = getUserIdFromContext(context)
+
+      const topic = await Topic.addTopic({
+        ...args.topicInput,
+        created_by: userId,
+      })
+      return topic.toJSON()
+    },
   },
 }
 
