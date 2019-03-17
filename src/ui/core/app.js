@@ -7,11 +7,11 @@ import { Layout } from './layout'
 import { AuthProvider } from './context/auth'
 import { ErrorBoundary } from './boundary'
 
-const About = React.lazy(() => import('../features/about'))
-const Home = React.lazy(() => import('../features/home'))
-const Contact = React.lazy(() => import('../features/contact'))
-const Register = React.lazy(() => import('../features/register'))
-const Login = React.lazy(() => import('../features/login'))
+const About = React.lazy(() => import('../pages/about'))
+const Home = React.lazy(() => import('../pages/home'))
+const Contact = React.lazy(() => import('../pages/contact'))
+const Register = React.lazy(() => import('../pages/register'))
+const Login = React.lazy(() => import('../pages/login'))
 
 export const App = () => {
   return (
