@@ -43,6 +43,7 @@
     "bookshelf": "^0.14.2",
     "chalk": "^2.4.2",
     "dataloader": "^1.4.0",
+    "dateformat": "^3.0.3",
     "deep-extend": "^0.6.0",
     "good": "^8.1.2",
     "good-console": "^8.0.0",
