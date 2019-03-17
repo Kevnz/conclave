@@ -8,12 +8,12 @@ import { AuthContext } from '../core/context/auth'
 const LOGIN_MUTATION = gql`
   mutation Login($loginInput: LoginInput!) {
     login(loginInput: $loginInput) {
-      token,
+      token
       user {
-        id,
-        firstName,
-        lastName,
-        username,
+        id
+        firstName
+        lastName
+        username
         email
       }
     }
@@ -23,6 +23,10 @@ const LOGIN_MUTATION = gql`
 export const LoginPage = () => {
   const loginUser = useMutation(LOGIN_MUTATION)
   const { state, dispatch } = useContext(AuthContext)
+
+  if (state.isLoggedIn) {
+    return <div>Already logged in</div>
+  }
   return (
     <main>
       <Form
@@ -34,15 +38,14 @@ export const LoginPage = () => {
               console.info('mutie', mutationResult)
               const { token, user } = mutationResult.data.login
 
-              dispatch( {
+              dispatch({
                 type: 'login',
-                payload: { token, user }
+                payload: { token, user },
               })
               navigate('/')
             },
-            variables: { loginInput: formData }
+            variables: { loginInput: formData },
           })
-
         }}
       >
         <TextBox type="email" label="Email" name="email" />
