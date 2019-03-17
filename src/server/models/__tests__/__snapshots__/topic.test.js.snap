@@ -2,12 +2,12 @@
 
 exports[`The Topic Model should match the snapshopt 1`] = `
 Object {
-  "created_at": 2019-03-10T01:31:12.851Z,
+  "created_at": 2019-03-14T18:25:03.782Z,
   "created_by": 3,
   "description": "customized reinvent users",
   "id": 1,
   "parent_id": null,
   "title": "Compatible incremental customer loyalty",
-  "updated_at": 2019-03-10T01:31:12.851Z,
+  "updated_at": 2019-03-14T18:25:03.782Z,
 }
 `;

@@ -2,14 +2,14 @@
 
 exports[`The User Model should match the snapshopt 1`] = `
 Object {
-  "created_at": 2019-03-10T01:31:12.843Z,
+  "created_at": 2019-03-14T18:25:03.772Z,
   "email": "fay_hermann42@example.com",
   "firstName": "Fay",
   "id": 1,
   "lastName": "Hermann",
   "role": "user",
   "token": null,
-  "updated_at": 2019-03-10T01:31:12.843Z,
+  "updated_at": 2019-03-14T18:25:03.772Z,
   "username": "fay.hermann",
 }
 `;
