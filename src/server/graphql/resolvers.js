@@ -11,11 +11,8 @@ const getUser = async (root, args, context, info) => {
 }
 
 const childTopicLoadFunction = async keys => {
-  // this is where the cache check should happen
   const hasKeys = await cache.hasAll(keys)
-  console.log('has those keys?', hasKeys)
   if (hasKeys) {
-    console.log('return from cache')
     return Promise.all(keys.map(cache.get))
   }
   const tops = await Topics.query(qb => {
@@ -25,7 +22,6 @@ const childTopicLoadFunction = async keys => {
   return Map(keys, async key => {
     const tops = topics.filter(t => t.parent_id === key) || []
     await cache.set(key, tops)
-    console.log('set?')
     return tops
   })
 }
