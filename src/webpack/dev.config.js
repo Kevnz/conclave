@@ -1,4 +1,3 @@
-const deepExtend = require('deep-extend')
 const merge = require('merge-deep')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
