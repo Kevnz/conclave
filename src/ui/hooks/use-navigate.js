@@ -1,10 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { navigate } from '@reach/router'
 
 export default function() {
   const [data, updateData] = useState([])
-  navigate('/')
-  useEffect(() => {}, [])
 
-  return data
+  useEffect(() => {
+    navigate('/')
+  }, [data])
+
+  return updateData
 }
