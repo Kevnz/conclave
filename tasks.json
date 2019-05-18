@@ -1,0 +1,40 @@
+{
+  "build": "webpack --config ./src/webpack/prod.config.js --mode production",
+  "predev": [
+    "docker-compose -f ./docker/docker-compose.yml up --detach",
+    "node ./src/scripts/delay.js",
+    "npx knex migrate:latest",
+    "npx knex seed:run"
+  ],
+  "dev": [
+    "nodemon ./src/server/index.js",
+    "webpack-dev-server --config ./src/webpack/dev.config.js --mode development"
+  ],
+  "postdev": "docker-compose -f ./docker/docker-compose.yml down",
+  "pretest": [
+    "npm run lint",
+    "docker-compose -f ./docker/docker-compose.yml up --detach",
+    "node ./src/scripts/delay.js",
+    "npx knex migrate:latest",
+    "npx knex seed:run"
+  ],
+  "test": [
+    "jest --config=jest.config.js --detectOpenHandles --forceExit --testPathPattern='(src).*(__tests__).*.test.js'",
+    "jest ./src/ui --config=jest.ui.config.js --detectOpenHandles --forceExit"
+  ],
+  "posttest": [
+    "npx knex migrate:rollback",
+    "docker-compose -f ./docker/docker-compose.yml down"
+  ],
+  "lint": "eslint ./src",
+  "prewatch": "npm-run-all docker:up wait migrate:up seed:run",
+  "watch": "npm-run-all --parallel dev:**",
+  "postwatch": "npm run docker:down",
+  "migrate:up": "knex migrate:latest",
+  "migrate:back": "knex migrate:rollback",
+  "migrate:create": "typesetter migrate",
+  "model": "typesetter model",
+  "storybook": "start-storybook -p 6006",
+  "build-storybook": "build-storybook",
+  "fixtures": "node ./src/utils/fixtures"
+}
