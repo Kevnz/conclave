@@ -1,5 +1,6 @@
 const fs = require('fs').promises
 const Joi = require('joi')
+
 const getModel = async request => {
   console.log('params', `../models/${request.params.model}`)
   const all = require(`../models/`)
