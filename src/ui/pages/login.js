@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import { Form, TextBox, Password, Button } from 'react-form-elements'
-import gql from 'graphql-tag'
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation } from '@brightleaf/react-hooks'
 import { navigate } from '@reach/router'
 import { AuthContext } from '../core/context/auth'
 
-const LOGIN_MUTATION = gql`
+const LOGIN_MUTATION = `
   mutation Login($loginInput: LoginInput!) {
     login(loginInput: $loginInput) {
       token
@@ -21,31 +20,33 @@ const LOGIN_MUTATION = gql`
 `
 
 export const LoginPage = () => {
-  const loginUser = useMutation(LOGIN_MUTATION)
+  const { error, loading, makeQuery, data } = useMutation(
+    'http://localhost:8081/graphql',
+    LOGIN_MUTATION
+  )
   const { state, dispatch } = useContext(AuthContext)
 
   if (state.isLoggedIn) {
     return <div>Already logged in</div>
   }
+  if (data && data.login) {
+    const { token, user } = data.login
+
+    dispatch({
+      type: 'login',
+      payload: { token, user },
+    })
+    navigate('/')
+  }
+
   return (
     <main>
+      {error && <div>Error</div>}
+      {loading && <div>Loading</div>}
       <Form
         name="loginForm"
         onSubmit={formData => {
-          loginUser({
-            update: (proxy, mutationResult) => {
-              console.info('prox', proxy)
-              console.info('mutie', mutationResult)
-              const { token, user } = mutationResult.data.login
-
-              dispatch({
-                type: 'login',
-                payload: { token, user },
-              })
-              navigate('/')
-            },
-            variables: { loginInput: formData },
-          })
+          makeQuery({ loginInput: formData })
         }}
       >
         <TextBox type="email" label="Email" name="email" />
