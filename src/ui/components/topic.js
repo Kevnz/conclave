@@ -1,7 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-const TopicListing = ({ title, description, childTopics, level }) => {
+import { timeAgo } from '../utils/time-ago'
+const TopicListing = ({
+  title,
+  description,
+  childTopics,
+  level,
+  createdOn,
+}) => {
+  console.log('createdOn', createdOn)
+  const ago = timeAgo(createdOn)
+  console.log('ago', ago)
   const subTopics = childTopics.map(topic => (
     <TopicListing
       key={`topic-${level}-topic-id-${topic.id}`}
@@ -9,6 +18,7 @@ const TopicListing = ({ title, description, childTopics, level }) => {
       level={level + 1}
     />
   ))
+
   return (
     <div
       style={{
@@ -17,7 +27,7 @@ const TopicListing = ({ title, description, childTopics, level }) => {
     >
       <h3>{title}</h3>
       <div>{description}</div>
-      {subTopics}
+      <div>{ago}</div> {subTopics}
     </div>
   )
 }
