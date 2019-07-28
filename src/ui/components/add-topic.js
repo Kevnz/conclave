@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, TextBox, TextArea, Button } from 'react-form-elements'
-import withStyles from 'react-jss'
-import { formStyles } from '../styles/forms'
 
-export const AddTopicBase = ({ onSubmit, classes }) => {
+export const AddTopic = ({ onSubmit }) => {
   return (
-    <div className={classes.formBase}>
+    <div>
       <Form onSubmit={onSubmit}>
         <TextBox name="title" label="Title" />
         <TextArea name="description" label="Description" />
@@ -15,8 +13,6 @@ export const AddTopicBase = ({ onSubmit, classes }) => {
     </div>
   )
 }
-
-export const AddTopic = withStyles(formStyles)(AddTopicBase)
 
 AddTopic.propTypes = {
   onSubmit: PropTypes.func,
