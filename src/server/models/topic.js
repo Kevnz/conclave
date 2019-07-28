@@ -8,6 +8,11 @@ module.exports = bookshelf.model(
   {
     tableName: 'topics',
     idAttribute: 'id',
+    virtuals: {
+      createdOn: function() {
+        return this.get('created_at')
+      },
+    },
     createdBy: function() {
       return this.belongsTo('User', 'created_by')
     },
@@ -19,7 +24,12 @@ module.exports = bookshelf.model(
     },
   },
   {
-    getByParentId: async function getTopics(parentId) {
+    getById: async function(id) {
+      const topic = new this({ id })
+      await topic.fetch()
+      return topic
+    },
+    getByParentId: async function(parentId) {
       return this.collection()
         .query(qb => {
           if (parentId) {
@@ -44,7 +54,17 @@ module.exports = bookshelf.model(
           */
         })
     },
-    getTopLevel: async function getTopics() {
+    getTopLevel: async function() {
+      return this.collection()
+        .query(qb => {
+          qb.whereNull('parent_id')
+        })
+        .fetch({
+          withRelated: ['childTopics', 'createdBy'],
+        })
+    },
+    // eslint-disable-next-line sonarjs/no-identical-functions
+    getRecent: async function() {
       return this.collection()
         .query(qb => {
           qb.whereNull('parent_id')

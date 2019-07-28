@@ -5,6 +5,11 @@ module.exports = bookshelf.model(
   {
     tableName: 'messages',
     idAttribute: 'id',
+    virtuals: {
+      createdOn: function() {
+        return this.get('created_at')
+      },
+    },
     createdBy: function() {
       return this.belongsTo('User', 'created_by')
     },
@@ -16,6 +21,11 @@ module.exports = bookshelf.model(
     },
   },
   {
+    getById: async function(id) {
+      const message = new this({ id })
+      await message.fetch()
+      return message
+    },
     getByTopic: async function getByTopic(topicId) {
       return this.collection()
         .query(qb => {
@@ -31,6 +41,13 @@ module.exports = bookshelf.model(
       return this.collection()
         .query(qb => {
           qb.where('parent_id', parentId)
+        })
+        .fetch()
+    },
+    getRecent: async function getReplies(parentId) {
+      return this.collection()
+        .query(qb => {
+          qb.whereNotNull('topic_id').orderBy('created_at')
         })
         .fetch()
     },
