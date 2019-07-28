@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, TextBox, EmailInput, Button } from 'react-form-elements'
-import withStyles from 'react-jss'
-import { formStyles } from '../styles/forms'
 
-export const LoginInputBase = ({ onSubmit, classes }) => {
+export const LoginInput = ({ onSubmit }) => {
   return (
-    <div className={classes.formBase}>
+    <div>
       <Form onSubmit={onSubmit}>
         <EmailInput name="email" label="Email" />
         <TextBox name="password" label="Password" type="password" />
@@ -15,8 +13,6 @@ export const LoginInputBase = ({ onSubmit, classes }) => {
     </div>
   )
 }
-
-export const LoginInput = withStyles(formStyles)(LoginInputBase)
 
 LoginInput.propTypes = {
   onSubmit: PropTypes.func,

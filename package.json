@@ -76,7 +76,6 @@
     "react-form-elements": "^4.10.0",
     "react-helmet": "^5.2.1",
     "react-hot-loader": "^4.12.10",
-    "react-jss": "^8.6.1",
     "react-use": "^10.3.0",
     "rebound": "^0.1.0",
     "styled-components": "^4.3.2",
