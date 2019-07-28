@@ -1,3 +1,4 @@
+/* eslint-disable import/first */
 import './rhlConfig'
 import React from 'react'
 import ReactDOM from 'react-dom'
