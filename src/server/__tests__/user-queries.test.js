@@ -5,7 +5,7 @@ const { getToken } = require('../utils/auth')
 const User = require('../models/user')
 
 const getUser = () => {
-  const firstName= faker.name.firstName()
+  const firstName = faker.name.firstName()
   const lastName = faker.name.lastName()
   return {
     firstName,
@@ -27,7 +27,7 @@ describe('The Server GraphQL responses', () => {
   })
 
   it('should create a user', async () => {
-    const firstName= faker.name.firstName()
+    const firstName = faker.name.firstName()
     const lastName = faker.name.lastName()
     const query = {
       operationName: 'Signup',
