@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-identical-functions */
 const faker = require('faker')
 const topicFixtures = require('../../../fixtures/topics-fixture.json')
 const Topic = require('../topic')
@@ -49,6 +50,15 @@ describe('The Topic Model', () => {
           expect(childrenCount === fixtureChildrenCount)
           expect(createdBy.id === 1)
         })
+    })
+    it('should return the recent topics is getRecent is called', () => {
+      return Topic.getRecent().then(topics => {
+        const serializedTopics = topics.map(topic => topic.toJSON())
+        const fixtureCount = topicFixtures.filter(
+          topic => topic.parent_id === null
+        ).length
+        expect(serializedTopics.length === fixtureCount)
+      })
     })
   })
   describe('Adding a topic', () => {
