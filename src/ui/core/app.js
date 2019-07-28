@@ -6,7 +6,7 @@ import client from './client'
 import { Layout } from './layout'
 import { AuthProvider } from './context/auth'
 import { ErrorBoundary } from './boundary'
-
+import './app.scss'
 const About = React.lazy(() => import('../pages/about'))
 const Home = React.lazy(() => import('../pages/home'))
 const Contact = React.lazy(() => import('../pages/contact'))
