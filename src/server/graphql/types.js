@@ -9,5 +9,4 @@ const baseSchema = fs.readFileSync(
 const typeDefs = gql`
   ${baseSchema}
 `
-
 module.exports = typeDefs

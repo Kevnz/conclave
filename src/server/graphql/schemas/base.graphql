@@ -1,3 +1,9 @@
+scalar Date
+
+scalar DateTime
+
+scalar Time
+
 type User {
   id: Int
   firstName: String
@@ -11,7 +17,8 @@ type Topic {
   title: String
   description: String
   createdBy: User
-  parent: Topic
+  parent: Topic,
+  createdOn: DateTime
   childTopics: [Topic]
   messages: [Message]
 }
@@ -21,13 +28,16 @@ type Message {
   title: String
   body: String
   createdBy: User
-  parent: Topic
+  parent: Message,
+  topic: Topic,
+  createdOn: DateTime
   replies: [Message]
 }
 
 type Query {
   topics(topicId: ID): [Topic]
   topTopics: [Topic]
+  recentPosts: [Message]
   messages(topicId: ID!): [Message]
   user(token: ID): User
 }
