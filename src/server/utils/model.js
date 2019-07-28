@@ -1,6 +1,4 @@
 const extend = require('xtend')
-const Joi = require('joi')
-const difference = require('lodash.difference')
 
 module.exports = function modelBase(bookshelf, params) {
   if (!bookshelf) {
