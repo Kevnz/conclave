@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { Button, Icon } from '@brightleaf/elements'
 export const AccountLink = ({ name, onClick }) => {
   return (
-    <div>
-      <a
-        href="#"
-        onClick={e => {
-          console.log('the click', onClick.toString())
-          onClick(e)
-        }}
-      >
-        {' '}
-        {name}{' '}
-      </a>
-    </div>
+    <Button
+      isSmall
+      isAnchor
+      isOutlined
+      href="#"
+      onClick={e => {
+        console.log('the click', onClick.toString())
+        onClick(e)
+      }}
+    >
+      <Icon fa icon="user" /> <span> {name}</span>
+    </Button>
   )
 }
 
