@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable no-unused-vars */
 const fs = require('fs').promises
 const Joi = require('joi')
 
@@ -24,7 +26,7 @@ module.exports = [
 
       return {
         data: files.reduce((files, current) => {
-          if (current !== '__tests__' && current != 'index.js') {
+          if (current !== '__tests__' && current !== 'index.js') {
             files.push(current.replace('.js', ''))
           }
           return files
