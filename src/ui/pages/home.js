@@ -1,24 +1,55 @@
 import React from 'react'
-import gql from 'graphql-tag'
-import { Helmet } from 'react-helmet'
-import { useQuery } from 'react-apollo-hooks'
-import Topic from '../components/topic'
+import { useGraphQL, useTitle } from '@brightleaf/react-hooks'
+import PostListing from '../components/post-listing'
 
-const GET_TOPICS = gql`
+const GET_TOPICS = `
   {
     topTopics {
       id
       title
       description
+      createdOn
       childTopics {
         id
         title
+        createdOn
+      }
+    }
+  }
+`
+/*
+id: Int
+title: String
+body: String
+createdBy: User
+parent: Topic
+createdOn: DateTime
+replies: [Message]
+*/
+const GET_RECENT_MESSAGES = `
+  {
+    recentPosts {
+      id
+      title
+      body
+      createdOn,
+      createdBy {
+        username
+      }
+      topic {
+        id
+        title
+        description
+        createdBy {
+          username
+        }
       }
     }
   }
 `
 export default () => {
-  const { data, error, loading } = useQuery(GET_TOPICS)
+  useTitle('The Conclave - Home')
+  const { data, error, loading } = useGraphQL('/graphql', GET_RECENT_MESSAGES)
   if (loading) {
     return 'loading'
   }
@@ -26,13 +57,11 @@ export default () => {
     console.error(error)
     return 'bugger'
   }
-  const topics = data.topTopics.map(t => <Topic key={`topic-${t.id}`} {...t} />)
+  const topics = data.recentPosts.map(t => (
+    <PostListing key={`topic-${t.id}`} {...t} />
+  ))
   return (
     <main>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>The Conclave - Home</title>
-      </Helmet>
       <h1>Topics</h1>
       {topics}
     </main>
