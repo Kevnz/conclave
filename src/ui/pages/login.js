@@ -21,7 +21,7 @@ const LOGIN_MUTATION = `
 
 export const LoginPage = () => {
   const { error, loading, makeQuery, data } = useMutation(
-    'http://localhost:8081/graphql',
+    '/graphql',
     LOGIN_MUTATION
   )
   const { state, dispatch } = useContext(AuthContext)
