@@ -1,44 +1,58 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import gql from 'graphql-tag'
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation, useLocalStorage } from '@brightleaf/react-hooks'
 import AddTopic from '../components/add-topic'
 
-const TOPIC_MUTATION = gql`
-  mutation AddTopic($newTopicInput: NewTopicInput!) {
-    addTopic(newTopicInput: $newTopicInput) {
+const TOPIC_MUTATION = `
+  mutation AddTopic($topicInput: TopicInput!) {
+    addTopic(topicInput: $topicInput) {
+      id
       title
       description
     }
   }
 `
 
-export const AddTopicFeature = ({ onSubmit, classes }) => {
-  const addTopic = useMutation(TOPIC_MUTATION)
-  const { dispatch } = useContext('TopicContext')
+export const AddTopicFeature = ({ onSubmit }) => {
+  const [token] = useLocalStorage('auth_token')
+
+  const { error, loading, makeQuery, data } = useMutation(
+    '/graphql',
+    TOPIC_MUTATION,
+    {
+      headers: {
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    }
+  )
+
+  const topicContext = useContext('TopicContext')
+  console.log('topic context', topicContext)
+  const dispatch = obj => {
+    console.info(obj)
+  }
+  if (data && data.addTopic) {
+    const { id } = data.addTopic
+
+    dispatch({
+      type: 'TOPIC_ADDED',
+      payload: { topicId: id },
+    })
+  }
 
   return (
     <div>
+      {error && <div>Error</div>}
+      {loading && <div>Loading</div>}
       <h2>Create a topic</h2>
       <AddTopic
         onSubmit={({ title, description }) => {
-          addTopic({
-            update: (proxy, mutationResult) => {
-              console.info('prox', proxy)
-              console.info('mutie', mutationResult)
-              const { id } = mutationResult.data.addTopic
-
-              dispatch({
-                type: 'TOPIC_ADDED',
-                payload: { topicId: id },
-              })
-              // ?navigate('/')
-            },
-            variables: {
-              newTopicInput: {
-                title,
-                description,
-              },
+          console.log('make it yo')
+          makeQuery({
+            topicInput: {
+              title,
+              description,
+              parentId: null,
             },
           })
         }}
@@ -55,4 +69,4 @@ AddTopicFeature.defaultProps = {
   onSubmit: () => {},
 }
 
-export default AddTopic
+export default AddTopicFeature
