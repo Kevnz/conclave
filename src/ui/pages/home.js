@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { useQuery, useTitle } from '@brightleaf/react-hooks'
-import { Container, Section } from '@brightleaf/elements'
 import PostListing from '../components/post-listing'
 import { Loader } from '../components/loader'
 const GET_TOPICS = `
@@ -19,15 +18,7 @@ const GET_TOPICS = `
     }
   }
 `
-/*
-id: Int
-title: String
-body: String
-createdBy: User
-parent: Topic
-createdOn: DateTime
-replies: [Message]
-*/
+
 const GET_RECENT_MESSAGES = `
   {
     recentPosts {
@@ -69,6 +60,7 @@ export default () => {
     console.error(error)
     return 'bugger'
   }
+
   const topics = data.recentPosts.map(t => (
     <PostListing key={`topic-${t.id}`} {...t} />
   ))
