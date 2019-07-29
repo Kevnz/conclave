@@ -149,6 +149,10 @@ export const Layout = ({ children }) => {
               isLarge
               className="is-block is-alt"
               href="#"
+              onClick={e => {
+                e.preventDefault()
+                navigate('/topic/add')
+              }}
             >
               New Post
             </Button>
