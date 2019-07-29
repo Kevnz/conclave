@@ -63,6 +63,15 @@ module.exports = bookshelf.model(
           withRelated: ['childTopics', 'createdBy'],
         })
     },
+    popularTopics: async function() {
+      return this.collection()
+        .query(qb => {
+          qb.orderBy('created_at').limit(15)
+        })
+        .fetch({
+          withRelated: ['childTopics', 'createdBy'],
+        })
+    },
     // eslint-disable-next-line sonarjs/no-identical-functions
     getRecent: async function() {
       return this.collection()
