@@ -30,8 +30,16 @@ export default function PostListing({
   createdBy,
   tag,
   createdOn,
-  parent,
+  ...props
 }) {
+  console.info({
+    title,
+    body,
+    createdBy,
+    tag,
+    createdOn,
+    ...props,
+  })
   return (
     <article className="post">
       <h4>{title}</h4>
