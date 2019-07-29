@@ -6,6 +6,7 @@
     "docker:up": "docker-compose -f ./docker/docker-compose.yml up --detach",
     "docker:down": "docker-compose -f ./docker/docker-compose.yml down",
     "build": "webpack --config ./src/webpack/prod.config.js --mode production",
+    "dev": "isom dev",
     "dev:db": "npm run docker:up && npm run wait",
     "dev:server": "nodemon ./src/server/index.js",
     "dev:ui": "webpack-dev-server --config ./src/webpack/dev.config.js --mode development",
@@ -30,8 +31,8 @@
     "test:full": "npm-run-all docker:up wait migrate:up test migrate:down docker:down"
   },
   "dependencies": {
-    "@brightleaf/elements": "^0.18.0",
-    "@brightleaf/react-hooks": "^1.1.1",
+    "@brightleaf/elements": "^0.20.1",
+    "@brightleaf/react-hooks": "^1.2.0",
     "@hot-loader/react-dom": "^16.8.6",
     "@kev_nz/delayed-job": "^1.0.2",
     "@reach/router": "^1.2.1",
