@@ -88,6 +88,17 @@ input TopicInput {
   description: String!
   parentId: Int
 }
+
+"""
+The **PostInput** is the data required for a user to login
+"""
+input PostInput {
+  title: String!
+  body: String!
+  topicId: Int
+  parentId: Int
+}
+
 type Mutation {
 
   """
@@ -106,4 +117,9 @@ type Mutation {
   **addTopic** creates a new topic
   """
   addTopic(topicInput: TopicInput!): Topic!
+
+  """
+  **addPost** creates a new post
+  """
+  addPost(postInput: PostInput!): Message!
 }
