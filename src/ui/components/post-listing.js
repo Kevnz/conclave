@@ -56,7 +56,7 @@ export default function PostListing({
             <p>
               <a href="#">{createdBy.username}</a> replied {timeAgo(createdOn)}{' '}
               &nbsp;
-              <Tag as="span">{tag}</Tag>
+              <Tag as="span">{tag || 'Post'}</Tag>
             </p>
           </Content>
         </MediaContent>
