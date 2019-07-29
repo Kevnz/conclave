@@ -1,27 +1,30 @@
 import React from 'react'
-import gql from 'graphql-tag'
-import { Helmet } from 'react-helmet'
-import { useQuery } from 'react-apollo-hooks'
-import Topic from '../components/topic'
 
-const GET_TOPICS = gql`
+import { useGraphQL } from '@brightleaf/react-hooks/lib/use-graphql'
+import Topic from '../components/topic'
+import PostListing from '../components/post-listing'
+
+export default ({ topicId }) => {
+  const GET_TOPICS = `
 {
-  query Topics($topicId: Int) {
-    topics(topicId: $topicId) {
-      id
-      title
-      description
-      childTopics {
-        id
-        title
-        description
+  topics(topicId: ${parseInt(topicId, 10)}) {
+    id
+    title
+    description
+    messages {
+      id,
+      title,
+      body,
+      createdBy {
+        username
       }
+      createdOn
     }
   }
 }
 `
-export default () => {
-  const { data, error, loading } = useQuery(GET_TOPICS)
+  const { data, error, loading } = useGraphQL('/graphql', GET_TOPICS)
+
   if (loading) {
     return 'loading'
   }
@@ -29,15 +32,24 @@ export default () => {
     console.error(error)
     return 'bugger'
   }
-  const topics = data.topTopics.map(t => <Topic key={`topic-${t.id}`} {...t} />)
+  if (data && !data.topics) {
+    return <div>wait for it</div>
+  }
+  console.info('data', data.topics[0])
+  const posts =
+    data && data.topics ? (
+      data.topics[0].messages.map(t => {
+        console.info('the message', t)
+        // return <div>{t.title}</div>
+        return <PostListing key={`topic-${t.id}`} {...t} />
+      })
+    ) : (
+      <div>wait for it</div>
+    )
   return (
     <main>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>The Conclave - Home</title>
-      </Helmet>
-      <h1>Topics</h1>
-      {topics}
+      <h1>Topic</h1>
+      {posts}
     </main>
   )
 }
