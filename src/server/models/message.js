@@ -47,7 +47,9 @@ module.exports = bookshelf.model(
     getRecent: async function getReplies(parentId) {
       return this.collection()
         .query(qb => {
-          qb.whereNotNull('topic_id').orderBy('created_at')
+          qb.whereNotNull('topic_id')
+            .orderBy('created_at')
+            .limit(15)
         })
         .fetch()
     },
