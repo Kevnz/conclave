@@ -1,7 +1,8 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react'
 
-import { useGraphQL } from '@brightleaf/react-hooks/lib/use-graphql'
-import Topic from '../components/topic'
+import { useQuery } from '@brightleaf/react-hooks/lib/use-graphql'
+
 import PostListing from '../components/post-listing'
 
 export default ({ topicId }) => {
@@ -23,8 +24,10 @@ export default ({ topicId }) => {
   }
 }
 `
-  const { data, error, loading } = useGraphQL('/graphql', GET_TOPICS)
-
+  const { data, error, loading, makeQuery } = useQuery('/graphql', GET_TOPICS)
+  useEffect(() => {
+    makeQuery()
+  }, [])
   if (loading) {
     return 'loading'
   }
@@ -35,7 +38,7 @@ export default ({ topicId }) => {
   if (data && !data.topics) {
     return <div>wait for it</div>
   }
-  console.info('data', data.topics[0])
+
   const posts =
     data && data.topics ? (
       data.topics[0].messages.map(t => {
