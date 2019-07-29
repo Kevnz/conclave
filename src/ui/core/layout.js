@@ -37,7 +37,7 @@ export const Layout = ({ children }) => {
     <>
       <NavBar className="navbar is-white topNav">
         <Container className="container">
-          <NavBarBrand src="brightleafjs-logo.png" width="112" height="28" />
+          <NavBarBrand src="conclave.png" width="112" height="28" />
           <NavBarMenu id="topNav" className="navbar-menu">
             <NavBarStart>
               <NavBarItem>
@@ -196,7 +196,7 @@ export const Layout = ({ children }) => {
             </Menu>
           </Column>
           <Column is="9">
-            <Box>{children}</Box>
+            <Box className="content">{children}</Box>
           </Column>
         </Columns>
       </Container>
