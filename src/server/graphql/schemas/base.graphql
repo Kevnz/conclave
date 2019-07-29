@@ -38,6 +38,7 @@ type Query {
   topics(topicId: ID): [Topic]
   topTopics: [Topic]
   recentPosts: [Message]
+  popularTopics: [Topic]
   messages(topicId: ID!): [Message]
   user(token: ID): User
 }

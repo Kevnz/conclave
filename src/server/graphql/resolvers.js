@@ -63,6 +63,10 @@ const resolvers = {
       const user = await new User({ id: getUserIdFromContext(context) }).fetch()
       return user.toJSON()
     },
+    popularTopics: async (root, args, context, info) => {
+      const tops = await Topic.getPopularTopics()
+      return tops.toJSON()
+    },
   },
   Message: {
     createdBy: getUser,
