@@ -15,6 +15,9 @@ const start = async () => {
   })
   const app = Hapi.server({
     port: process.env.PORT,
+    router: {
+      stripTrailingSlash: true,
+    },
     routes: {
       files: {
         relativeTo: Path.join(__dirname, 'public'),
