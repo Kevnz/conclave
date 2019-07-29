@@ -2,19 +2,40 @@
 
 <head>
   <title>{{title}}</title>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
+  <style>
+    .model-name {
+      display: inline-block;
+    }
 
+    .model-name::first-letter {
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <h1>Conclave</h1>
-  </header>
-  <main>
-    {{{ content }}}
-  </main>
-  <footer>
+  <span>
 
-  </footer>
+    <section class="hero is-info is-bold">
+      <div class="hero-body">
+
+        <h1 class="title">
+          Conclave
+        </h1>
+        <h2 class="subtitle">
+          {{subtitle}}
+        </h2>
+
+      </div>
+    </section>
+    <section class="section">
+      {{{ content }}}
+    </section>
+    <footer>
+
+    </footer>
+  </span>
 </body>
 
 </html>
