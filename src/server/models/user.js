@@ -1,6 +1,6 @@
 /* eslint-disable spellcheck/spell-checker */
 const bcrypt = require('bcrypt')
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 const bookshelf = require('../bookshelf')
 const { InvalidPasswordError } = require('../errors')
 // const email = require('../email')
@@ -49,6 +49,7 @@ module.exports = bookshelf.model(
     },
   },
   {
+    schema,
     /**
      * login
      *
@@ -91,6 +92,22 @@ module.exports = bookshelf.model(
         password: hashedPassword,
       }).save()
     },
-    schema,
+    // eslint-disable-next-line sonarjs/no-identical-functions
+    addUser: async function({
+      firstName,
+      lastName,
+      email,
+      password,
+      username,
+    }) {
+      const hashedPassword = await bcrypt.hash(password, saltRounds)
+      return new this({
+        firstName,
+        lastName,
+        email: email.toLowerCase().trim(),
+        username,
+        password: hashedPassword,
+      }).save()
+    },
   }
 )

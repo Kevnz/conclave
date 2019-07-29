@@ -1,7 +1,23 @@
+const Joi = require('@hapi/joi')
 const bookshelf = require('../bookshelf')
-
 require('./user')
 require('./message')
+
+const schema = {
+  required: {
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+  },
+  optional: {
+    parent_id: Joi.number().optional(),
+    created_by: Joi.number().optional(),
+  },
+  base: {
+    id: Joi.any().optional(),
+    created_at: Joi.date().optional(),
+    updated_at: Joi.date().optional(),
+  },
+}
 
 module.exports = bookshelf.model(
   'Topic',
@@ -24,6 +40,7 @@ module.exports = bookshelf.model(
     },
   },
   {
+    schema,
     getById: async function(id) {
       const topic = new this({ id })
       await topic.fetch()
