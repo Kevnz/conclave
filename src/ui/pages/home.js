@@ -1,5 +1,7 @@
-import React from 'react'
-import { useGraphQL, useTitle } from '@brightleaf/react-hooks'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react'
+import { useQuery, useTitle } from '@brightleaf/react-hooks'
+import { Container, Section } from '@brightleaf/elements'
 import PostListing from '../components/post-listing'
 
 const GET_TOPICS = `
@@ -49,8 +51,18 @@ const GET_RECENT_MESSAGES = `
 `
 export default () => {
   useTitle('The Conclave - Home')
-  const { data, error, loading } = useGraphQL('/graphql', GET_RECENT_MESSAGES)
+  const { data, error, loading, makeQuery } = useQuery(
+    '/graphql',
+    GET_RECENT_MESSAGES
+  )
+  useEffect(() => {
+    makeQuery()
+  }, [])
+
   if (loading) {
+    return 'loading'
+  }
+  if (!data.recentPosts) {
     return 'loading'
   }
   if (error) {
@@ -60,10 +72,5 @@ export default () => {
   const topics = data.recentPosts.map(t => (
     <PostListing key={`topic-${t.id}`} {...t} />
   ))
-  return (
-    <main>
-      <h1>Topics</h1>
-      {topics}
-    </main>
-  )
+  return <>{topics}</>
 }
