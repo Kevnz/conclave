@@ -8,10 +8,10 @@ module.exports = (items, attributes) => {
       ? items.map(item => rowGen(item, attributes))
       : [`<tr><td colspan="${attributes.length}">No Records</td></tr>`]
 
-  return `<table>
+  return `<div class="table-container"><table class="table is-striped is-bordered  is-hoverable is-fullwidth">
   ${head}
   <tbody>
   ${rows.join('')}
   </tbody>
-  </table>`
+  </table></div>`
 }
