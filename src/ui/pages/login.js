@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { Form, TextBox, Password, Button } from 'react-form-elements'
+import { Form, TextBox, Password } from 'react-form-elements'
 import { useMutation } from '@brightleaf/react-hooks'
+import { Button } from '@brightleaf/elements'
 import { navigate } from '@reach/router'
 import { AuthContext } from '../core/context/auth'
 
@@ -49,8 +50,21 @@ export const LoginPage = () => {
           makeQuery({ loginInput: formData })
         }}
       >
-        <TextBox type="email" label="Email" name="email" />
-        <Password label="Password" name="password" />
+        <TextBox
+          type="email"
+          label="Email"
+          name="email"
+          className="field control"
+          inputClassName="input"
+          labelClassName="label"
+        />
+        <Password
+          label="Password"
+          name="password"
+          className="field control"
+          inputClassName="input"
+          labelClassName="label"
+        />
         <Button>Login</Button>
       </Form>
     </main>
