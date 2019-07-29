@@ -51,5 +51,31 @@ module.exports = bookshelf.model(
         })
         .fetch()
     },
+
+    addMessage: async function({
+      title,
+      body,
+      // eslint-disable-next-line camelcase
+      created_by,
+      // eslint-disable-next-line camelcase
+      parent_id,
+      // eslint-disable-next-line camelcase
+      topic_id,
+    }) {
+      console.info('message', {
+        title,
+        body,
+        created_by,
+        parent_id,
+        topic_id,
+      })
+      return new this({
+        title,
+        body,
+        created_by,
+        parent_id,
+        topic_id,
+      }).save()
+    },
   }
 )
