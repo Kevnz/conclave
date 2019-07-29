@@ -32,6 +32,7 @@ type Message {
   topic: Topic,
   createdOn: DateTime
   replies: [Message]
+  tags: [String]
 }
 
 type Query {
