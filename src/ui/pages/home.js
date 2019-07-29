@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useQuery, useTitle } from '@brightleaf/react-hooks'
 import { Container, Section } from '@brightleaf/elements'
 import PostListing from '../components/post-listing'
-
+import { Loader } from '../components/loader'
 const GET_TOPICS = `
   {
     topTopics {
@@ -60,10 +60,10 @@ export default () => {
   }, [])
 
   if (loading) {
-    return 'loading'
+    return <Loader />
   }
   if (!data.recentPosts) {
-    return 'loading'
+    return <Loader />
   }
   if (error) {
     console.error(error)
