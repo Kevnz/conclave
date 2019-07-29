@@ -1,13 +1,14 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-unused-vars */
 const fs = require('fs').promises
-const Joi = require('joi')
-
+const Joi = require('@hapi/joi')
+const isPlural = require('../utils/is-plural')
 const getModel = async request => {
-  console.log('params', `../models/${request.params.model}`)
-  const all = require(`../models/`)
-  console.log('all', all)
-  return all
+  return require(`../models/`)
+}
+
+const getModels = async request => {
+  return require(`../models/`)
 }
 
 module.exports = [
@@ -134,7 +135,49 @@ module.exports = [
       }
     },
   },
+  {
+    method: 'GET',
+    path: '/admin/view',
+    options: {
+      tags: ['api', 'admin'],
+      description: 'Admin section main page. [Root Scope]',
+      notes: 'Admin section main page.',
 
+      validate: {},
+      pre: [
+        {
+          assign: 'models',
+          method: getModels,
+        },
+      ],
+    },
+    handler: async (request, h) => {
+      const options = {}
+
+      const keys = Object.keys(request.pre.models)
+
+      const singular = keys.reduce((names, name) => {
+        if (isPlural(name)) return names
+        if (!names.includes(name.toLowerCase())) {
+          names.push(name.toLowerCase())
+        }
+        return names
+      }, [])
+      // console.log('get the models', request.pre.models)
+      const data = {
+        appName: 'conclave',
+        models: singular,
+      }
+
+      return h.view('models.html', {
+        message: 'Learning stuff',
+        title: 'Conclave',
+        subtitle: 'Admin Landing',
+        messages: ['h.flash()'],
+        data,
+      })
+    },
+  },
   {
     method: 'GET',
     path: '/admin/view/{model}',
@@ -155,6 +198,15 @@ module.exports = [
       console.log('get the model')
       const Model = require(`../models/`)[request.params.model]
       console.info('Model', Model)
+
+      const description = Joi.describe({
+        ...Model.schema.required,
+        ...Model.schema.optional,
+        ...Model.schema.base,
+      })
+      console.log('model description', description.children)
+      const keys = Object.keys(description.children)
+
       const query = {}
       const limit = request.query.limit
       const page = request.query.page
@@ -175,13 +227,14 @@ module.exports = [
         modelName: request.params.model,
         records: dataItems.toJSON(),
         attrs: dataItems.models[0].keys(),
-        description: 'description.children',
+        description: description.children,
       }
 
       console.log('data', data)
       return h.view('list.html', {
         message: 'Learning stuff',
         title: 'Conclave - Admin',
+        subtitle: `View - ${request.params.model}`,
         messages: ['h.flash()'],
         data,
       })
@@ -206,6 +259,7 @@ module.exports = [
     handler: async (request, h) => {
       console.log('get the model')
       const Model = require(`../models/`)[request.params.model]
+
       const description = Joi.describe({
         ...Model.schema.required,
         ...Model.schema.optional,
@@ -225,6 +279,8 @@ module.exports = [
       return h.view('new.html', {
         message: 'Making things',
         title: 'Conclave - Admin',
+        subtitle: `New - ${request.params.model}`,
+        modelName: request.params.model,
         data,
       })
     },
@@ -274,6 +330,50 @@ module.exports = [
           `/admin/view/${request.params.appName}/${request.params.model}`
         )
       }
+    },
+  },
+  {
+    method: 'GET',
+    path: '/admin/view/{model}/{id}',
+    options: {
+      tags: ['api', 'admin'],
+      description: 'Admin section main page. [Root Scope]',
+      notes: 'Admin section main page.',
+      validate: {},
+      pre: [
+        {
+          assign: 'model',
+          method: getModel,
+        },
+      ],
+    },
+    handler: async (request, h) => {
+      const Model = require(`../models/`)[request.params.model]
+      const model = await Model.getById(request.params.id)
+      console.log('model', model)
+      const description = Joi.describe({
+        ...Model.schema.required,
+        ...Model.schema.optional,
+        ...Model.schema.base,
+      })
+
+      const keys = Object.keys(description.children)
+
+      const data = {
+        name: request.params.model,
+        modelName: request.params.model,
+        attrs: keys,
+        description: description.children,
+        item: model.toJSON(),
+      }
+      console.log('data', data)
+      return h.view('edit.html', {
+        message: 'Making things',
+        title: 'Conclave - Admin',
+        subtitle: `Edit - ${request.params.model}`,
+        modelName: request.params.model,
+        data,
+      })
     },
   },
   {
