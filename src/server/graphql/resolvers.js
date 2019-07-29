@@ -102,10 +102,23 @@ const resolvers = {
       }
     },
     addTopic: async (root, args, context, info) => {
+      console.log('context', context)
+      console.log('args', args)
+      console.log('info', info)
       const userId = getUserIdFromContext(context)
-
+      console.log('userid', userId)
       const topic = await Topic.addTopic({
         ...args.topicInput,
+        created_by: userId,
+      })
+      return topic.toJSON()
+    },
+    addPost: async (root, args, context, info) => {
+      const userId = getUserIdFromContext(context)
+      console.log('userid', userId)
+
+      const topic = await Message.addMessage({
+        ...args.postInput,
         created_by: userId,
       })
       return topic.toJSON()
