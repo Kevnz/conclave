@@ -2,25 +2,41 @@ const to = require('to-case')
 module.exports = (attributes, item = null) => {
   const rows = attributes.map(attr => {
     if (attr === '_id' && item) {
-      return `<div>
-      <label>${to.capital(attr)}</label>
-      <input type="hidden" name="${attr}" value="${item ? item[attr] : ''}" />
+      return `<div class="field">
+      <label class="label">${to.capital(attr)}</label><div class="control">
+      <input class="input" type="hidden" name="${attr}" value="${
+        item ? item[attr] : ''
+      }" />
+      </div>
       </div>`
     } else if (attr === '_id' && !item) {
       return ''
     } else if (attr === 'user') {
       return ''
     }
-
-    return `<div>
-      <label>${to.capital(attr)}</label>
-      <input type="text" name="${attr}" value="${item ? item[attr] : ''}" />
-      </div>`
+    if (item[attr] && item[attr].length) {
+      console.log(item[attr].length)
+    }
+    if (item[attr] && item[attr].length > 100) {
+      return `<div class="field">
+      <label class="label">${to.capital(attr)}</label>
+      <div class="control">
+      <textarea class="textarea" name="${attr}">${item[attr]}</textarea>
+      </div> </div>`
+    }
+    return `<div class="field">
+      <label class="label">${to.capital(attr)}</label>
+      <div class="control">
+      <input class="input" type="text" name="${attr}" value="${
+      item ? item[attr] : ''
+    }" />
+      </div> </div>`
   })
 
-  return `<form method="${item ? 'PUT' : 'POST'}">
-  <h3>Create or Update</h3>
+  return `<form class="form" method="${item ? 'PUT' : 'POST'}">
   ${rows.join('')}
-  <div><input type="submit" value="${item ? 'Update' : 'Save'}" /></div>
+  <div class="field"><input class="button is-primary" type="submit" value="${
+    item ? 'Update' : 'Save'
+  }" /></div>
   </form>`
 }
