@@ -34,6 +34,7 @@
     "@brightleaf/elements": "^0.20.1",
     "@brightleaf/react-hooks": "^1.2.0",
     "@hapi/joi": "^15.1.0",
+    "@hapi/yar": "^9.2.0",
     "@hot-loader/react-dom": "^16.8.6",
     "@kev_nz/delayed-job": "^1.0.2",
     "@reach/router": "^1.2.1",
