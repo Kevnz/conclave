@@ -53,7 +53,7 @@ module.exports = [
     },
     handler: async request => {
       const Model = require(`../models/`)[request.params.model]
-      console.info('Model', Model)
+
       const query = {}
       const limit = request.query.limit
       const page = request.query.page
@@ -62,14 +62,9 @@ module.exports = [
 
       const dataItems = await Model.fetchAll()
       const inst = new Model()
-      console.info('keys', inst)
-      for (const i in inst) {
-        console.warn('prop', i)
-        console.warn('val', inst[i])
-      }
+
       return {
         keys: inst.keys(),
-        keydogs: dataItems.models[0].keys(),
         name: Model.name.toString(),
         data: dataItems,
       }
@@ -86,23 +81,13 @@ module.exports = [
       pre: [],
     },
     handler: async (request, h) => {
-      console.log('the post')
-      const app = request.APPS_SETTINGS.filter(
-        app => app.APP_ID === request.params.appName
-      )[0]
-      const model = app.MODELS.filter(model => {
-        const m = require(model)
-        return m.collectionName === request.params.model
-      })[0]
+      const Model = require(`../models/`)[request.params.model]
 
-      const Model = require(model)
-      const document = new Model(request.payload)
-      console.log('model', document)
-      const doc = await Model.insertOne(document)
-      console.log('doc', doc)
+      const model = new Model(request.payload)
+      await model.save()
       return h.flash(
-        `${Model.name} created`,
-        `/admin/data/${request.params.appName}/${request.params.model}`
+        `${request.params.model} created`,
+        `/admin/data/${request.params.model}`
       )
     },
   },
@@ -118,20 +103,12 @@ module.exports = [
       pre: [],
     },
     handler: async request => {
-      const app = request.APPS_SETTINGS.filter(
-        app => app.APP_ID === request.params.appName
-      )[0]
-      const model = app.MODELS.filter(model => {
-        const m = require(model)
-        return m.collectionName === request.params.model
-      })[0]
-
-      const Model = require(model)
-      const item = await Model.findById(request.params.id)
+      const Model = require(`../models/`)[request.params.model]
+      const model = await Model.getById(request.params.id)
 
       return {
         name: Model.name.toString(),
-        [Model.name]: item,
+        [Model.name]: model,
       }
     },
   },
@@ -163,7 +140,7 @@ module.exports = [
         }
         return names
       }, [])
-      // console.log('get the models', request.pre.models)
+
       const data = {
         appName: 'conclave',
         models: singular,
@@ -195,7 +172,6 @@ module.exports = [
       ],
     },
     handler: async (request, h) => {
-      console.log('get the model')
       const Model = require(`../models/`)[request.params.model]
       console.info('Model', Model)
 
@@ -204,7 +180,7 @@ module.exports = [
         ...Model.schema.optional,
         ...Model.schema.base,
       })
-      console.log('model description', description.children)
+
       const keys = Object.keys(description.children)
 
       const query = {}
@@ -215,11 +191,6 @@ module.exports = [
 
       const dataItems = await Model.fetchAll()
       const inst = new Model()
-      console.info('keys', inst)
-      for (const i in inst) {
-        console.warn('prop', i)
-        console.warn('val', inst[i])
-      }
 
       const data = {
         appName: 'conclave',
@@ -230,7 +201,6 @@ module.exports = [
         description: description.children,
       }
 
-      console.log('data', data)
       return h.view('list.html', {
         message: 'Learning stuff',
         title: 'Conclave - Admin',
@@ -257,7 +227,6 @@ module.exports = [
       ],
     },
     handler: async (request, h) => {
-      console.log('get the model')
       const Model = require(`../models/`)[request.params.model]
 
       const description = Joi.describe({
@@ -265,9 +234,9 @@ module.exports = [
         ...Model.schema.optional,
         ...Model.schema.base,
       })
-      console.log('model description', description.children)
+
       const keys = Object.keys(description.children)
-      console.log('keys', keys)
+
       const data = {
         appName: 'conclave',
         name: request.params.model,
@@ -275,7 +244,7 @@ module.exports = [
         attrs: keys,
         description: description.children,
       }
-      console.log('data', data)
+
       return h.view('new.html', {
         message: 'Making things',
         title: 'Conclave - Admin',
@@ -297,31 +266,15 @@ module.exports = [
       pre: [],
     },
     handler: async (request, h) => {
-      console.log('the post', request.payload)
-      const app = request.APPS_SETTINGS.filter(
-        app => app.APP_ID === request.params.appName
-      )[0]
-      const model = app.MODELS.filter(model => {
-        const m = require(model)
-        return m.collectionName === request.params.model
-      })[0]
       try {
-        const Model = require(model)
-        const document = new Model(request.payload)
-        console.log('model', document)
-        const [doc] = await Model.insertOne(document)
-        request.logger('Doc saved', doc)
-        if (doc.linkUser) {
-          console.log('link user')
-          request.logger('User', request.auth.credentials.user)
-          await doc.linkUser(request.auth.credentials.user._id.toString())
-        }
-        const items = await Model.find({})
-        console.log('items', items)
+        const Model = require(`../models/`)[request.params.model]
+        const model = new Model(request.payload)
+
+        await model.save()
 
         return h.flash(
           `${Model.name} created`,
-          `/admin/view/${request.params.appName}/${request.params.model}`
+          `/admin/view/${request.params.model}/`
         )
       } catch (err) {
         console.log('ERROR FAILED', err)
@@ -350,7 +303,7 @@ module.exports = [
     handler: async (request, h) => {
       const Model = require(`../models/`)[request.params.model]
       const model = await Model.getById(request.params.id)
-      console.log('model', model)
+
       const description = Joi.describe({
         ...Model.schema.required,
         ...Model.schema.optional,
@@ -366,7 +319,7 @@ module.exports = [
         description: description.children,
         item: model.toJSON(),
       }
-      console.log('data', data)
+
       return h.view('edit.html', {
         message: 'Making things',
         title: 'Conclave - Admin',
@@ -392,29 +345,22 @@ module.exports = [
       ],
     },
     handler: async (request, h) => {
-      const app = request.APPS_SETTINGS.filter(
-        app => app.APP_ID === request.params.appName
-      )[0]
-      const model = app.MODELS.filter(model => {
-        const m = require(model)
-        return m.collectionName === request.params.model
-      })[0]
+      const Model = require(`../models/`)[request.params.model]
+      const model = await Model.getById(request.params.id)
+
       try {
-        const updateModel = {
-          $set: request.payload,
-        }
-        const Model = require(model)
-        await Model.findByIdAndUpdate(request.params.id, updateModel)
+        model.set(request.payload)
+        await model.save()
 
         return h.flash(
           `${Model.name} updated`,
-          `/admin/view/${request.params.appName}/${request.params.model}`
+          `/admin/view/${request.params.model}/`
         )
       } catch (err) {
         console.error('ERROR FAILED', err)
         return h.flash(
           `${request.params.model} failed`,
-          `/admin/view/${request.params.appName}/${request.params.model}`
+          `/admin/view/${request.params.model}/`
         )
       }
     },
