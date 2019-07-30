@@ -11,6 +11,15 @@ const getModels = async request => {
   return require(`../models/`)
 }
 
+const getModelList = models => {
+  return models.reduce((names, name) => {
+    if (isPlural(name)) return names
+    if (!names.includes(name.toLowerCase())) {
+      names.push(name.toLowerCase())
+    }
+    return names
+  }, [])
+}
 module.exports = [
   {
     method: 'GET',
@@ -132,14 +141,7 @@ module.exports = [
       const options = {}
 
       const keys = Object.keys(request.pre.models)
-
-      const singular = keys.reduce((names, name) => {
-        if (isPlural(name)) return names
-        if (!names.includes(name.toLowerCase())) {
-          names.push(name.toLowerCase())
-        }
-        return names
-      }, [])
+      const singular = getModelList(keys)
 
       const data = {
         appName: 'conclave',
@@ -150,7 +152,8 @@ module.exports = [
         message: 'Learning stuff',
         title: 'Conclave',
         subtitle: 'Admin Landing',
-        messages: ['h.flash()'],
+        messages: h.flash(),
+        models: singular,
         data,
       })
     },
@@ -169,6 +172,10 @@ module.exports = [
           assign: 'model',
           method: getModel,
         },
+        {
+          assign: 'models',
+          method: getModels,
+        },
       ],
     },
     handler: async (request, h) => {
@@ -180,7 +187,8 @@ module.exports = [
         ...Model.schema.optional,
         ...Model.schema.base,
       })
-
+      const keysD = Object.keys(request.pre.models)
+      const singular = getModelList(keysD)
       const keys = Object.keys(description.children)
 
       const query = {}
@@ -199,10 +207,11 @@ module.exports = [
         records: dataItems.toJSON(),
         attrs: dataItems.models[0].keys(),
         description: description.children,
+        models: singular,
       }
 
       return h.view('list.html', {
-        message: 'Learning stuff',
+        message: 'Conclave',
         title: 'Conclave - Admin',
         subtitle: `View - ${request.params.model}`,
         messages: ['h.flash()'],
@@ -223,6 +232,10 @@ module.exports = [
         {
           assign: 'model',
           method: getModel,
+        },
+        {
+          assign: 'models',
+          method: getModels,
         },
       ],
     },
@@ -297,6 +310,10 @@ module.exports = [
         {
           assign: 'model',
           method: getModel,
+        },
+        {
+          assign: 'models',
+          method: getModels,
         },
       ],
     },
