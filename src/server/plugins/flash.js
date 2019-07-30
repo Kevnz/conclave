@@ -17,7 +17,7 @@ const register = (server, options) => {
     expiresIn: settings.expires,
   })
 
-  const flash = (message, destination) => {
+  const flash = function(message, destination) {
     let reply = this
     let request = reply.request
 
