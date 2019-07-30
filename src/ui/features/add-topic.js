@@ -43,7 +43,6 @@ export const AddTopicFeature = ({ onSubmit }) => {
   return (
     <div>
       {error && <div>Error</div>}
-      {loading && <div>Loading</div>}
       <h2>Create a topic</h2>
       <AddTopic
         onSubmit={({ title, description }) => {
