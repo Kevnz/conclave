@@ -1,0 +1,37 @@
+version: 2.1
+commands:
+  conclave_build:
+    description: 'Build Conclave'
+    parameters:
+      env:
+        type: string
+        default: "dev"
+    steps:
+      - run: npm install
+
+      - run: npm build
+  conclave_process:
+    description: 'Build and test'
+    parameters:
+      env:
+        type: string
+        default: "dev"
+    steps:
+      - conclave_build:
+          env: << parameters.env >>
+      - run: npm test
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+
+    working_directory: ~/conclave
+
+    steps:
+      - checkout
+      - conclave_build:
+          env: "prod"
+
+
+
