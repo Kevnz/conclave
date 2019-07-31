@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useMutation, useLocalStorage } from '@brightleaf/react-hooks'
 import { navigate } from '@reach/router'
 import AddTopic from '../components/add-topic'
+import { GridLoader } from '../components/loader'
 
 const TOPIC_MUTATION = `
   mutation AddTopic($topicInput: TopicInput!) {
@@ -45,6 +46,7 @@ export const AddTopicFeature = ({ onSubmit }) => {
   return (
     <div>
       {error && <div>Error</div>}
+      {loading && <GridLoader isSmall></GridLoader>}
       <h2>Create a topic</h2>
       <AddTopic
         onSubmit={({ title, description }) => {
