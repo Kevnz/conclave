@@ -17,6 +17,7 @@ const register = (server, options) => {
     expiresIn: settings.expires,
   })
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   const flash = function(message, destination) {
     let reply = this
     let request = reply.request
