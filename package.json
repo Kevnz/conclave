@@ -45,6 +45,7 @@
     "blipp": "^4.0.0",
     "bookshelf": "^0.15.1",
     "chalk": "^2.4.2",
+    "classnames": "^2.2.6",
     "creature-features": "^4.0.0",
     "cross-env": "^5.2.0",
     "dataloader": "^1.4.0",
