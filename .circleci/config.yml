@@ -9,7 +9,7 @@ commands:
     steps:
       - run: npm install
 
-      - run: npm build
+      - run: npm run build
   conclave_process:
     description: 'Build and test'
     parameters:
