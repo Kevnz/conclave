@@ -44,6 +44,8 @@
     "blipp": "^4.0.0",
     "bookshelf": "^0.15.1",
     "chalk": "^2.4.2",
+    "creature-features": "^4.0.0",
+    "cross-env": "^5.2.0",
     "dataloader": "^1.4.0",
     "dateformat": "^3.0.3",
     "deep-extend": "^0.6.0",
