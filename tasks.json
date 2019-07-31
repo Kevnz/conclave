@@ -7,7 +7,7 @@
     "npx knex seed:run"
   ],
   "dev": [
-    "nodemon ./src/server/index.js",
+    "cross-env DEBUG=knex:query nodemon ./src/server/index.js",
     "webpack-dev-server --config ./src/webpack/dev.config.js --mode development"
   ],
   "postdev": "docker-compose -f ./docker/docker-compose.yml down",
