@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import './loader.scss'
 
 export const Loader = () => {
@@ -11,9 +12,9 @@ export const Loader = () => {
   )
 }
 
-export const GridLoader = () => {
+export const GridLoader = ({ isSmall }) => {
   return (
-    <div className="prepreloader">
+    <div className={classnames('prepreloader', { small: isSmall })}>
       <div className="preloader">
         <div className="lds-grid">
           <div></div>
