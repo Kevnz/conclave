@@ -66,7 +66,7 @@ module.exports = bookshelf.model(
       return this.collection()
         .query(qb => {
           qb.whereNotNull('topic_id')
-            .orderBy('created_at')
+            .orderBy('created_at', 'desc')
             .limit(15)
         })
         .fetch()
