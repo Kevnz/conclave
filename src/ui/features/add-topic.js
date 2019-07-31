@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { useMutation, useLocalStorage } from '@brightleaf/react-hooks'
+import { navigate } from '@reach/router'
 import AddTopic from '../components/add-topic'
 
 const TOPIC_MUTATION = `
@@ -38,6 +39,7 @@ export const AddTopicFeature = ({ onSubmit }) => {
       type: 'TOPIC_ADDED',
       payload: { topicId: id },
     })
+    navigate(`/topic/${id}`)
   }
 
   return (
