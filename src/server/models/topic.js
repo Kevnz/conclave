@@ -93,7 +93,7 @@ module.exports = bookshelf.model(
     getRecent: async function() {
       return this.collection()
         .query(qb => {
-          qb.whereNull('parent_id')
+          qb.orderBy('created_at', 'desc')
         })
         .fetch({
           withRelated: ['childTopics', 'createdBy'],
