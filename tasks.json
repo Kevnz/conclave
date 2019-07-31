@@ -48,5 +48,5 @@
   ],
   "postci:test": [
     "npx knex migrate:rollback"
-  ],
+  ]
 }
