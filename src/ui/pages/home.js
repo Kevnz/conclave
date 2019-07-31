@@ -3,21 +3,7 @@ import React, { useEffect } from 'react'
 import { useQuery, useTitle } from '@brightleaf/react-hooks'
 import PostListing from '../components/post-listing'
 import { Loader } from '../components/loader'
-const GET_TOPICS = `
-  {
-    topTopics {
-      id
-      title
-      description
-      createdOn
-      childTopics {
-        id
-        title
-        createdOn
-      }
-    }
-  }
-`
+
 
 const GET_RECENT_MESSAGES = `
   {
