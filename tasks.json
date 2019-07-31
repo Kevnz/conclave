@@ -36,5 +36,17 @@
   "model": "typesetter model",
   "storybook": "start-storybook -p 6006",
   "build-storybook": "build-storybook",
-  "fixtures": "node ./src/utils/fixtures"
+  "fixtures": "node ./src/utils/fixtures",
+  "preci:test": [
+    "npm run lint",
+    "npx knex migrate:latest",
+    "npx knex seed:run"
+  ],
+  "ci:test": [
+    "jest --config=jest.config.js --detectOpenHandles --forceExit --testPathPattern='(src).*(__tests__).*.test.js'",
+    "jest ./src/ui --config=jest.ui.config.js --detectOpenHandles --forceExit"
+  ],
+  "postci:test": [
+    "npx knex migrate:rollback"
+  ],
 }

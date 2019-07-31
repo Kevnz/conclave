@@ -28,6 +28,7 @@
     "wait": "node ./src/scripts/delay.js",
     "test:x": "npm-run-all test:server test:ui",
     "test": "isom test",
+    "ci:test": "isom ci:test",
     "test:full": "npm-run-all docker:up wait migrate:up test migrate:down docker:down"
   },
   "dependencies": {
