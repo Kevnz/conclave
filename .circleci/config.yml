@@ -19,18 +19,32 @@ commands:
     steps:
       - conclave_build:
           env: << parameters.env >>
-      - run: npm test
+      - run: npm run ci:test
 
 jobs:
   build:
     docker:
       - image: circleci/node:12
-
+      - image: postgres:9.6.6-alpine
+        environment:
+          POSTGRES_USER: dbuser
+          POSTGRES_DB: dbuser
+          POSTGRES_PASSWORD: dbpassword_password
     working_directory: ~/conclave
 
     steps:
       - checkout
-      - conclave_build:
+      - run:
+          name: Waiting for Postgres to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z localhost 5432 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for Postgress && exit 1
+      - conclave_process:
           env: "prod"
 
 
