@@ -249,13 +249,15 @@ module.exports = [
       })
 
       const keys = Object.keys(description.children)
-
+      const keysD = Object.keys(request.pre.models)
+      const singular = getModelList(keysD)
       const data = {
         appName: 'conclave',
         name: request.params.model,
         modelName: request.params.model,
         attrs: keys,
         description: description.children,
+        models: singular,
       }
 
       return h.view('new.html', {
@@ -280,8 +282,29 @@ module.exports = [
     },
     handler: async (request, h) => {
       try {
+        delete request.payload.id
+        delete request.payload.created_at
+        if (request.payload.parent_id === '') {
+          delete request.payload.parent_id
+        }
+        const payloadKeys = Object.keys(request.payload)
+        const payload = payloadKeys.reduce((vals, current) => {
+          if (
+            current.indexOf('_id') > -1 &&
+            request.payload[current] !== null
+          ) {
+            vals[current] = parseInt(request.payload[current], 10)
+          } else {
+            vals[current] = request.payload[current]
+          }
+          return vals
+        }, {})
+        console.info('payload', request.payload)
+        console.info('payload reduced', payload)
+
+        console.info('request.params.model', request.params.model)
         const Model = require(`../models/`)[request.params.model]
-        const model = new Model(request.payload)
+        const model = new Model(payload)
 
         await model.save()
 
@@ -293,7 +316,7 @@ module.exports = [
         console.log('ERROR FAILED', err)
         return h.flash(
           `${request.params.model} failed`,
-          `/admin/view/${request.params.appName}/${request.params.model}`
+          `/admin/view/${request.params.model}/new`
         )
       }
     },
