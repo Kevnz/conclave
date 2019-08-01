@@ -5,7 +5,7 @@ import {
   fireEvent,
   waitForElement,
 } from '@testing-library/react'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import '@babel/polyfill'
 import { AuthContext, AuthProvider } from '../auth'
 import { Layout } from '../../layout'
