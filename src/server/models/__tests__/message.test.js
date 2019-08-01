@@ -5,8 +5,9 @@ describe('The Message Model', () => {
   it('should match the snapshopt', async () => {
     const message = await Message.where({ id: 1 }).fetch()
     const snapshotMessage = message.toJSON()
-    //  delete snapshotTopic.created_at
-    // delete snapshotTopic.updated_at
+    delete snapshotMessage.created_at
+    delete snapshotMessage.updated_at
+    delete snapshotMessage.createdOn
     expect(snapshotMessage).toMatchSnapshot()
   })
 

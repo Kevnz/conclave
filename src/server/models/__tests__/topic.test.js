@@ -7,8 +7,9 @@ describe('The Topic Model', () => {
   it('should match the snapshopt', async () => {
     const topic = await Topic.where({ id: 1 }).fetch()
     const snapshotTopic = topic.toJSON()
-    //  delete snapshotTopic.created_at
-    //  delete snapshotTopic.updated_at
+    delete snapshotTopic.created_at
+    delete snapshotTopic.updated_at
+    delete snapshotTopic.createdOn
     expect(snapshotTopic).toMatchSnapshot()
   })
   describe('Top Level', () => {

@@ -3,6 +3,7 @@ require('xtconf')()
 
 module.exports = {
   verbose: true,
+  transform: {},
   moduleNameMapper: {
     '\\.(css|less)$': 'identity-obj-proxy',
   },

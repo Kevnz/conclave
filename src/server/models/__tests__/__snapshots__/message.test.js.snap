@@ -3,12 +3,11 @@
 exports[`The Message Model should match the snapshopt 1`] = `
 Object {
   "body": "est et quis facere sint accusantium dolores sint debitis et neque quaerat omnis vel dolorem autem tempora quos voluptatem deleniti alias repudiandae exercitationem nobis consequatur reprehenderit perspiciatis voluptatem id minus est sapiente doloribus harum accusantium voluptas quidem repellat optio non",
-  "created_at": 2019-03-14T18:25:03.789Z,
   "created_by": 1,
   "id": 1,
   "parent_id": null,
+  "tag": Array [],
   "title": "Extended optimizing access",
   "topic_id": 3,
-  "updated_at": 2019-03-14T18:25:03.789Z,
 }
 `;

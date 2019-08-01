@@ -20,8 +20,9 @@ describe('The User Model', async () => {
   it('should match the snapshopt', async () => {
     const user = await User.where({ id: 1 }).fetch()
     const snapshotUser = user.toJSON()
-    // delete snapshotUser.created_at
-    // delete snapshotUser.updated_at
+    delete snapshotUser.created_at
+    delete snapshotUser.updated_at
+    delete snapshotUser.createdOn
     expect(snapshotUser).toMatchSnapshot()
   })
   it('should create a user', async () => {
