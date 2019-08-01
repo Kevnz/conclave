@@ -3,7 +3,8 @@ require('xtconf')()
 
 module.exports = {
   verbose: true,
-  transform: {
-    // '^.+\\.jsx?$': 'babel-jest',
+  moduleNameMapper: {
+    '\\.(css|less)$': 'identity-obj-proxy',
   },
+  testPathPattern: '(src).*(__tests__).*.test.js',
 }
