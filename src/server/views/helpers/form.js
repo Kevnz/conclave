@@ -1,5 +1,7 @@
 const to = require('to-case')
 const readonly = ['created_at', 'createdOn', 'updated_at']
+
+// eslint-disable-next-line sonarjs/cognitive-complexity
 module.exports = (attributes, item = null) => {
   const rows = attributes.map(attr => {
     const isDisabled = readonly.includes(attr)
