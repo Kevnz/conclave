@@ -4,7 +4,6 @@ import { useQuery, useTitle } from '@brightleaf/react-hooks'
 import PostListing from '../components/post-listing'
 import { Loader } from '../components/loader'
 
-
 const GET_RECENT_MESSAGES = `
   {
     recentPosts {
