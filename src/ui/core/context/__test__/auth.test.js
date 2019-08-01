@@ -37,9 +37,11 @@ const Thinger = () => {
             dispatch({
               type: 'login',
               payload: {
-                firstName: 'Test',
-                lastName: 'User',
-                username: 'testuser',
+                user: {
+                  firstName: 'Test',
+                  lastName: 'User',
+                  username: 'testuser',
+                },
               },
             })
           }}
