@@ -207,13 +207,10 @@ export const Layout = ({ children }) => {
               <Field isGrouped isGroupedMultiline>
                 <Control>
                   <Tags hasAddons>
-                    <Tag
-                      isLink
-                      href="https://github.com/dansup/bulma-templates"
-                    >
-                      Bulma Templates
+                    <Tag isLink href="https://github.com/kevnz/conclave">
+                      Conclave
                     </Tag>
-                    <Tag isLight>Daniel Supernault</Tag>
+                    <Tag isLight>GitHub</Tag>
                   </Tags>
                 </Control>
                 <Control>
