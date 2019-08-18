@@ -35,6 +35,7 @@ const devConfig = {
   ],
   devtool: 'cheap-module-source-map',
   devServer: {
+    port: 8090,
     contentBase: './public',
     hot: true,
     historyApiFallback: true,
