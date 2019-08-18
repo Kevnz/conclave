@@ -26,7 +26,7 @@ const RegisterForm = () => {
     REGISTER_MUTATION
   )
   const { state, dispatch } = useContext(AuthContext)
-  console.log({ error, loading, makeQuery, data })
+
   if (data && data.signup) {
     const { token, user } = data.signup
 
