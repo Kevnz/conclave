@@ -21,6 +21,7 @@ type Topic {
   createdOn: DateTime
   childTopics: [Topic]
   messages: [Message]
+  tags: [String]
 }
 
 type Message {
