@@ -28,11 +28,20 @@ import {
 import { useStyleSheet } from '@brightleaf/react-hooks/lib/use-stylesheet'
 import { AccountLink } from '../components/account-link'
 import { AuthContext } from './context/auth'
+import { AppContext } from './context/app'
 import './forum.css'
 
 export const Layout = ({ children }) => {
   useStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
   const { state, dispatch } = useContext(AuthContext)
+  const { tags } = useContext(AppContext)
+  const TagList = tags.map(t => (
+    <MenuListItem key={`tag-list-${t.label.toLowerCase()}`}>
+      <Tag isMedium isInfo>
+        {t.label}
+      </Tag>
+    </MenuListItem>
+  ))
   return (
     <>
       <NavBar className="navbar is-white topNav">
@@ -44,10 +53,10 @@ export const Layout = ({ children }) => {
                 <a href="/">Home</a>
               </NavBarItem>
               <NavBarItem>
-                <a href="#LANDING">Landing</a>
+                <a href="#">Landing</a>
               </NavBarItem>
               <NavBarItem>
-                <a href="#BLOG">Blog</a>
+                <a href="#">Blog</a>
               </NavBarItem>
             </NavBarStart>
             <NavBarEnd>
@@ -158,41 +167,7 @@ export const Layout = ({ children }) => {
             </Button>
             <Menu className="menu">
               <MenuLabel>Tags</MenuLabel>
-              <MenuList>
-                <MenuListItem>
-                  <Tag isPrimary isMedium>
-                    Dashboard
-                  </Tag>
-                </MenuListItem>
-                <MenuListItem>
-                  <Tag className="is-link" isMedium>
-                    Customers
-                  </Tag>
-                </MenuListItem>
-                <MenuListItem>
-                  <Tag isLight isDanger isMedium>
-                    Authentication
-                  </Tag>
-                </MenuListItem>
-                <MenuListItem>
-                  <Tag isDark isMedium>
-                    Payments
-                  </Tag>
-                </MenuListItem>
-                <MenuListItem>
-                  <Tag isSuccess isMedium>
-                    Transfers
-                  </Tag>
-                </MenuListItem>
-                <MenuListItem>
-                  <Tag isWarning isMedium>
-                    Balance
-                  </Tag>
-                </MenuListItem>
-                <MenuListItem>
-                  <Tag isMedium>Question</Tag>
-                </MenuListItem>
-              </MenuList>
+              <MenuList>{TagList}</MenuList>
             </Menu>
           </Column>
           <Column is="9">
