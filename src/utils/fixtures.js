@@ -1,5 +1,6 @@
 const fs = require('fs')
 const userGenerator = require('./generators/users')
+const adminGenerator = require('./generators/admin-user')
 const topicGenerator = require('./generators/topics')
 const messageGenerator = require('./generators/messages')
 const random = (min, max) => Math.round(Math.random() * (max - min) + min)
@@ -11,6 +12,7 @@ const messages = []
 for (let i = 1; i < 21; i++) {
   users.push(userGenerator(i))
 }
+users.push(adminGenerator(21))
 for (let i = 1; i < 6; i++) {
   topics.push(topicGenerator(i, random(1, 20)))
 }
