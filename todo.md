@@ -6,8 +6,8 @@
 * Add Message
 * Track read status
 * Display thread details
-* Send Message to other users
-* Update personal messages
+* Send Message to other users?
+* Update personal messages?
 
 ## Dev
 
