@@ -1,15 +1,9 @@
-# My Custom App
+# Conclave
 
-```
-- docker
-- src
--- server
---- models
---- public
---- routes
--- ui
---- core
---- features
+It's a forum
 
+```bash
+npm install
+npm run dev
 ```
 
