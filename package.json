@@ -64,7 +64,7 @@
     "isom": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "keyboardjs": "^2.5.1",
-    "knex": "^0.19.2",
+    "knex": "^2.4.0",
     "lodash.difference": "^4.5.0",
     "merge-deep": "^3.0.2",
     "mini.css": "^3.0.1",
